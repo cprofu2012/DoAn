@@ -491,9 +491,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _WR `Vb 1 e@3169 ]
 "392 C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\include\pic168xa.h
 [v _RD `Vb 1 e@3168 ]
-"381 C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\include\pic.h
-[v __delay `(v 0 ef1`ul ]
-[p i __delay ]
 [; ;pic168xa.h: 19: volatile unsigned char INDF @ 0x00;
 [; ;pic168xa.h: 20: volatile unsigned char TMR0 @ 0x01;
 [; ;pic168xa.h: 21: volatile unsigned char PCL @ 0x02;
@@ -748,185 +745,189 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 431: extern unsigned char __resetbits;
 [; ;uart.h: 12: void uart_init();
 [; ;uart.h: 13: void uart_putc(char c);
-[; ;uart.h: 14: void uart_puts(const char *s);
-[; ;uart.h: 15: char uart_data_ready();
-[; ;uart.h: 16: char uart_getc();
-[; ;uart.h: 17: void uart_gets(char *s);
-"5 F:\Learning\CPro\Source\ES\Code\Firmware\uart.c
+[; ;uart.h: 14: void uart_putn(unsigned char c);
+[; ;uart.h: 15: void uart_puts(const char *s);
+[; ;uart.h: 16: char uart_data_ready();
+[; ;uart.h: 17: char uart_getc();
+[; ;uart.h: 18: void uart_gets(char *s);
+"5 D:\DoAn\ES\Code\Firmware\uart.c
 [v _uart_init `(v 1 ef ]
 {
 [; ;uart.c: 4: void uart_init()
 [; ;uart.c: 5: {
 [e :U _uart_init ]
 [f ]
-[; ;uart.c: 51: SPBRG=(4000000/(16UL * 1200))-1;
-"51
-[e = _SPBRG -> - / -> -> 4000000 `l `ul * -> 16 `ul -> -> -> 1200 `i `l `ul -> -> -> 1 `i `l `ul `uc ]
-[; ;uart.c: 52: BRGH=1;
-"52
+[; ;uart.c: 89: SPBRG=(10000000/(16UL * 19200))-1;
+"89
+[e = _SPBRG -> - / -> -> 10000000 `l `ul * -> 16 `ul -> -> -> 19200 `i `l `ul -> -> -> 1 `i `l `ul `uc ]
+[; ;uart.c: 90: BRGH= 1;
+"90
 [e = _BRGH -> -> 1 `i `b ]
-[; ;uart.c: 53: SYNC=0;
-"53
+[; ;uart.c: 91: SYNC=0;
+"91
 [e = _SYNC -> -> 0 `i `b ]
-[; ;uart.c: 54: SPEN=1;
-"54
+[; ;uart.c: 92: SPEN=1;
+"92
 [e = _SPEN -> -> 1 `i `b ]
-[; ;uart.c: 55: CREN=1;
-"55
+[; ;uart.c: 93: CREN=1;
+"93
 [e = _CREN -> -> 1 `i `b ]
-[; ;uart.c: 56: SREN=0;
-"56
+[; ;uart.c: 94: SREN=0;
+"94
 [e = _SREN -> -> 0 `i `b ]
-[; ;uart.c: 57: TXIE=0;
-"57
+[; ;uart.c: 95: TXIE=0;
+"95
 [e = _TXIE -> -> 0 `i `b ]
-[; ;uart.c: 58: RCIE=0;
-"58
+[; ;uart.c: 96: RCIE=0;
+"96
 [e = _RCIE -> -> 0 `i `b ]
-[; ;uart.c: 59: TX9=0;
-"59
+[; ;uart.c: 97: TX9=0;
+"97
 [e = _TX9 -> -> 0 `i `b ]
-[; ;uart.c: 60: RX9=0;
-"60
+[; ;uart.c: 98: RX9=0;
+"98
 [e = _RX9 -> -> 0 `i `b ]
-[; ;uart.c: 61: TXEN=0;
-"61
+[; ;uart.c: 99: TXEN=0;
+"99
 [e = _TXEN -> -> 0 `i `b ]
-[; ;uart.c: 62: TXEN=1;
-"62
+[; ;uart.c: 100: TXEN=1;
+"100
 [e = _TXEN -> -> 1 `i `b ]
-[; ;uart.c: 63: }
-"63
+[; ;uart.c: 101: TRISC6 = 0;
+"101
+[e = _TRISC6 -> -> 0 `i `b ]
+[; ;uart.c: 102: TRISC7 = 1;
+"102
+[e = _TRISC7 -> -> 1 `i `b ]
+[; ;uart.c: 103: }
+"103
 [e :UE 1 ]
 }
-"65
+"105
 [v _uart_putc `(v 1 ef1`uc ]
 {
-[; ;uart.c: 65: void uart_putc(char c){
+[; ;uart.c: 105: void uart_putc(char c){
 [e :U _uart_putc ]
 [v _c `uc 1 r1 ]
 [f ]
-[; ;uart.c: 66: while(!TXIF);
-"66
+[; ;uart.c: 106: while(!TXIF);
+"106
 [e $U 3  ]
 [e :U 4 ]
 [e :U 3 ]
 [e $ ! _TXIF 4  ]
 [e :U 5 ]
-[; ;uart.c: 67: TXREG = c;
-"67
+[; ;uart.c: 107: TXREG = c;
+"107
 [e = _TXREG _c ]
-[; ;uart.c: 69: }
-"69
+[; ;uart.c: 108: }
+"108
 [e :UE 2 ]
 }
-"71
+"110
 [v _uart_puts `(v 1 ef1`*Cuc ]
 {
-[; ;uart.c: 71: void uart_puts(const char* s){
+[; ;uart.c: 110: void uart_puts(const char* s){
 [e :U _uart_puts ]
 [v _s `*Cuc 1 r1 ]
 [f ]
-[; ;uart.c: 72: while(*s != '\0'){
-"72
+[; ;uart.c: 111: while(*s != '\0'){
+"111
 [e $U 7  ]
 [e :U 8 ]
 {
-[; ;uart.c: 73: uart_putc(*s);
-"73
+[; ;uart.c: 112: uart_putc(*s);
+"112
 [e ( _uart_putc (1 *U _s ]
-[; ;uart.c: 74: s++;
-"74
+[; ;uart.c: 113: s++;
+"113
 [e ++ _s * -> -> 1 `i `x -> -> # *U _s `i `x ]
-[; ;uart.c: 75: _delay((unsigned long)((60)*(4000000/4000000.0)));
-"75
-[e ( __delay (1 -> * -> -> 60 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"76
+"114
 }
 [e :U 7 ]
-"72
+"111
 [e $ != -> *U _s `ui -> 0 `ui 8  ]
 [e :U 9 ]
-[; ;uart.c: 76: }
-[; ;uart.c: 77: }
-"77
+[; ;uart.c: 114: }
+[; ;uart.c: 115: }
+"115
 [e :UE 6 ]
 }
-"78
+"116
 [v _uart_getc `(uc 1 ef ]
 {
-[; ;uart.c: 78: char uart_getc(){
+[; ;uart.c: 116: char uart_getc(){
 [e :U _uart_getc ]
 [f ]
-[; ;uart.c: 79: while(!RCIF);
-"79
+[; ;uart.c: 117: while(!RCIF);
+"117
 [e $U 11  ]
 [e :U 12 ]
 [e :U 11 ]
 [e $ ! _RCIF 12  ]
 [e :U 13 ]
-[; ;uart.c: 80: return RCREG;
-"80
+[; ;uart.c: 118: return RCREG;
+"118
 [e ) _RCREG ]
 [e $UE 10  ]
-[; ;uart.c: 81: }
-"81
+[; ;uart.c: 119: }
+"119
 [e :UE 10 ]
 }
-"82
+"120
 [v _uart_data_ready `(uc 1 ef ]
 {
-[; ;uart.c: 82: char uart_data_ready(){
+[; ;uart.c: 120: char uart_data_ready(){
 [e :U _uart_data_ready ]
 [f ]
-[; ;uart.c: 83: if(RCIF) return 1;
-"83
+[; ;uart.c: 121: if(RCIF) return 1;
+"121
 [e $ ! _RCIF 15  ]
 [e ) -> -> 1 `i `uc ]
 [e $UE 14  ]
 [e $U 16  ]
-"84
+"122
 [e :U 15 ]
-[; ;uart.c: 84: else return 0;
+[; ;uart.c: 122: else return 0;
 [e ) -> -> 0 `i `uc ]
 [e $UE 14  ]
 [e :U 16 ]
-[; ;uart.c: 85: }
-"85
+[; ;uart.c: 123: }
+"123
 [e :UE 14 ]
 }
-"86
+"124
 [v _uart_gets `(v 1 ef1`*uc ]
 {
-[; ;uart.c: 86: void uart_gets(char *s){
+[; ;uart.c: 124: void uart_gets(char *s){
 [e :U _uart_gets ]
 [v _s `*uc 1 r1 ]
 [f ]
-"87
+"125
 [v _g `uc 1 a ]
-[; ;uart.c: 87: char g;
-[; ;uart.c: 88: *s = uart_getc();
-"88
+[; ;uart.c: 125: char g;
+[; ;uart.c: 126: *s = uart_getc();
+"126
 [e = *U _s ( _uart_getc ..  ]
-[; ;uart.c: 89: while(*s!='\0'){
-"89
+[; ;uart.c: 127: while(*s!='\0'){
+"127
 [e $U 18  ]
 [e :U 19 ]
 {
-[; ;uart.c: 90: s++;
-"90
+[; ;uart.c: 128: s++;
+"128
 [e ++ _s * -> -> 1 `i `x -> -> # *U _s `i `x ]
-[; ;uart.c: 91: *s = uart_getc();
-"91
+[; ;uart.c: 129: *s = uart_getc();
+"129
 [e = *U _s ( _uart_getc ..  ]
-"92
+"130
 }
 [e :U 18 ]
-"89
+"127
 [e $ != -> *U _s `ui -> 0 `ui 19  ]
 [e :U 20 ]
-[; ;uart.c: 92: }
-[; ;uart.c: 93: }
-"93
+[; ;uart.c: 130: }
+[; ;uart.c: 131: }
+"131
 [e :UE 17 ]
 }

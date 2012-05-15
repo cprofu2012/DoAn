@@ -2,7 +2,7 @@
 MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
 Version=1.0
 [File000]
-Location=F:\Learning\CPro\Source\ES\Code\Firmware\uart.p1
+Location=D:\DoAn\ES\Code\Firmware\uart.p1
 Folder=Intermediary
 DeviceName=PIC16F876A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
@@ -15,7 +15,7 @@ ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 
 TraceCmdString=
 DebugOptions=
 [File001]
-Location=F:\Learning\CPro\Source\ES\Code\Firmware\main.p1
+Location=D:\DoAn\ES\Code\Firmware\main.p1
 Folder=Intermediary
 DeviceName=PIC16F876A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
@@ -28,7 +28,7 @@ ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 
 TraceCmdString=
 DebugOptions=
 [File002]
-Location=F:\Learning\CPro\Source\ES\Code\Firmware\Firmware.cof
+Location=D:\DoAn\ES\Code\Firmware\Firmware.cof
 Folder=Output
 DeviceName=PIC16F876A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
@@ -41,7 +41,7 @@ ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 
 TraceCmdString=
 DebugOptions=
 [File003]
-Location=F:\Learning\CPro\Source\ES\Code\Firmware\Firmware.hex
+Location=D:\DoAn\ES\Code\Firmware\Firmware.hex
 Folder=Output
 DeviceName=PIC16F876A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
@@ -54,7 +54,7 @@ ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 
 TraceCmdString=
 DebugOptions=
 [File004]
-Location=F:\Learning\CPro\Source\ES\Code\Firmware\Firmware.sym
+Location=D:\DoAn\ES\Code\Firmware\Firmware.sym
 Folder=Output
 DeviceName=PIC16F876A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
@@ -67,7 +67,7 @@ ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 
 TraceCmdString=
 DebugOptions=
 [File005]
-Location=F:\Learning\CPro\Source\ES\Code\Firmware\Firmware.map
+Location=D:\DoAn\ES\Code\Firmware\Firmware.map
 Folder=Output
 DeviceName=PIC16F876A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
@@ -80,7 +80,7 @@ ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 
 TraceCmdString=
 DebugOptions=
 [File006]
-Location=F:\Learning\CPro\Source\ES\Code\Firmware\Firmware.hxl
+Location=D:\DoAn\ES\Code\Firmware\Firmware.hxl
 Folder=Output
 DeviceName=PIC16F876A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
@@ -93,7 +93,7 @@ ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 
 TraceCmdString=
 DebugOptions=
 [File007]
-Location=F:\Learning\CPro\Source\ES\Code\Firmware\startup.lst
+Location=D:\DoAn\ES\Code\Firmware\startup.lst
 Folder=Output
 DeviceName=PIC16F876A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
@@ -106,7 +106,7 @@ ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 
 TraceCmdString=
 DebugOptions=
 [File008]
-Location=F:\Learning\CPro\Source\ES\Code\Firmware\startup.rlf
+Location=D:\DoAn\ES\Code\Firmware\startup.rlf
 Folder=Output
 DeviceName=PIC16F876A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
@@ -119,7 +119,7 @@ ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 
 TraceCmdString=
 DebugOptions=
 [File009]
-Location=F:\Learning\CPro\Source\ES\Code\Firmware\doprnt.p1
+Location=D:\DoAn\ES\Code\Firmware\doprnt.p1
 Folder=Output
 DeviceName=PIC16F876A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
@@ -132,7 +132,7 @@ ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 
 TraceCmdString=
 DebugOptions=
 [File010]
-Location=F:\Learning\CPro\Source\ES\Code\Firmware\doprnt.pre
+Location=D:\DoAn\ES\Code\Firmware\doprnt.pre
 Folder=Output
 DeviceName=PIC16F876A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
@@ -145,7 +145,7 @@ ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 
 TraceCmdString=
 DebugOptions=
 [File011]
-Location=F:\Learning\CPro\Source\ES\Code\Firmware\Firmware.obj
+Location=D:\DoAn\ES\Code\Firmware\Firmware.obj
 Folder=Output
 DeviceName=PIC16F876A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
@@ -158,7 +158,7 @@ ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 
 TraceCmdString=
 DebugOptions=
 [File012]
-Location=F:\Learning\CPro\Source\ES\Code\Firmware\Firmware.lst
+Location=D:\DoAn\ES\Code\Firmware\Firmware.lst
 Folder=Output
 DeviceName=PIC16F876A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
@@ -171,7 +171,7 @@ ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 
 TraceCmdString=
 DebugOptions=
 [File013]
-Location=F:\Learning\CPro\Source\ES\Code\Firmware\Firmware.rlf
+Location=D:\DoAn\ES\Code\Firmware\Firmware.rlf
 Folder=Output
 DeviceName=PIC16F876A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
@@ -184,7 +184,7 @@ ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 
 TraceCmdString=
 DebugOptions=
 [File014]
-Location=F:\Learning\CPro\Source\ES\Code\Firmware\Firmware.sdb
+Location=D:\DoAn\ES\Code\Firmware\Firmware.sdb
 Folder=Output
 DeviceName=PIC16F876A
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}

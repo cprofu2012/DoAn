@@ -491,18 +491,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _WR `Vb 1 e@3169 ]
 "392 C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\include\pic168xa.h
 [v _RD `Vb 1 e@3168 ]
-"14 F:\Learning\CPro\Source\ES\Code\Firmware\main.c
+"15 D:\DoAn\ES\Code\Firmware\main.c
 [v _signal_mode `b 1 e ]
 [p mainexit ]
-"10 F:\Learning\CPro\Source\ES\Code\Firmware\main.c
+"10 D:\DoAn\ES\Code\Firmware\main.c
 [v _init_all `(v 0 ef ]
+"15 D:\DoAn\ES\Code\Firmware\uart.h
+[v _uart_puts `(v 0 ef1`*Cuc ]
+"17 D:\DoAn\ES\Code\Firmware\uart.h
+[v _uart_getc `(uc 0 ef ]
+"14 D:\DoAn\ES\Code\Firmware\main.c
+[v _blink_led `(v 0 ef ]
+"13 D:\DoAn\ES\Code\Firmware\uart.h
+[v _uart_putc `(v 0 ef1`uc ]
 "381 C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\include\pic.h
 [v __delay `(v 0 ef1`ul ]
 [p i __delay ]
-"12 F:\Learning\CPro\Source\ES\Code\Firmware\uart.h
+"12 D:\DoAn\ES\Code\Firmware\uart.h
 [v _uart_init `(v 0 ef ]
-"13 F:\Learning\CPro\Source\ES\Code\Firmware\uart.h
-[v _uart_putc `(v 0 ef1`uc ]
 [; ;pic168xa.h: 19: volatile unsigned char INDF @ 0x00;
 [; ;pic168xa.h: 20: volatile unsigned char TMR0 @ 0x01;
 [; ;pic168xa.h: 21: volatile unsigned char PCL @ 0x02;
@@ -866,182 +872,212 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;string.h: 65: extern const char * strrichr(const char *, int);
 [; ;uart.h: 12: void uart_init();
 [; ;uart.h: 13: void uart_putc(char c);
-[; ;uart.h: 14: void uart_puts(const char *s);
-[; ;uart.h: 15: char uart_data_ready();
-[; ;uart.h: 16: char uart_getc();
-[; ;uart.h: 17: void uart_gets(char *s);
-"7 F:\Learning\CPro\Source\ES\Code\Firmware\main.c
-[; ;main.c: 7: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x3FFD & 0x3FFB& 0x3F7F");
+[; ;uart.h: 14: void uart_putn(unsigned char c);
+[; ;uart.h: 15: void uart_puts(const char *s);
+[; ;uart.h: 16: char uart_data_ready();
+[; ;uart.h: 17: char uart_getc();
+[; ;uart.h: 18: void uart_gets(char *s);
+"7 D:\DoAn\ES\Code\Firmware\main.c
+[; ;main.c: 7: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x3FFE & 0x3FFB& 0x3F7F");
 [; 	psect config,class=CONFIG,delta=2 ;#
-[; 	dw 0x3FFD & 0x3FFB& 0x3F7F ;#
+[; 	dw 0x3FFE & 0x3FFB& 0x3F7F ;#
 [; ;main.c: 10: void init_all();
 [; ;main.c: 11: void process();
 [; ;main.c: 12: void receive_data();
 [; ;main.c: 13: void sleep_all();
+[; ;main.c: 14: void blink_led();
 [i _signal_mode
-"14
+"15
 -> 0 `i
 ]
-[; ;main.c: 14: bit signal_mode = 0;
-"18
+[; ;main.c: 15: bit signal_mode = 0;
+"19
 [v _main `(v 1 ef ]
 {
-[; ;main.c: 17: void main()
-[; ;main.c: 18: {
+[; ;main.c: 18: void main()
+[; ;main.c: 19: {
 [e :U _main ]
 [f ]
-[; ;main.c: 19: init_all();
-"19
-[e ( _init_all ..  ]
-[; ;main.c: 20: while(1){
+[; ;main.c: 20: init_all();
 "20
+[e ( _init_all ..  ]
+[; ;main.c: 21: uart_puts("Welcome to GSS Group\r\n");
+"21
+[e ( _uart_puts (1 :s 1C ]
+"24
+[v _c `uc 1 a ]
+[; ;main.c: 24: char c = uart_getc();
+[e = _c ( _uart_getc ..  ]
+[; ;main.c: 25: while(1){
+"25
 [e :U 8 ]
 {
-[; ;main.c: 24: RC2 = 1;
-"24
-[e = _RC2 -> -> 1 `i `b ]
-[; ;main.c: 26: _delay((unsigned long)((10)*(4000000/4000.0)));
+[; ;main.c: 26: blink_led();
 "26
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main.c: 27: RC2 = 0;
+[e ( _blink_led ..  ]
+[; ;main.c: 27: uart_putc(c);
 "27
-[e = _RC2 -> -> 0 `i `b ]
-[; ;main.c: 28: _delay((unsigned long)((10)*(4000000/4000.0)));
+[e ( _uart_putc (1 _c ]
+[; ;main.c: 28: _delay((unsigned long)((50)*(10000000/4000.0)));
 "28
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"32
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
+"29
 }
 [e :U 7 ]
-"20
+"25
 [e $U 8  ]
 [e :U 9 ]
+[; ;main.c: 29: }
 [; ;main.c: 32: }
-[; ;main.c: 33: }
-"33
+"32
 [e :UE 6 ]
 }
-"36
+"35
 [v _init_all `(v 1 ef ]
 {
-[; ;main.c: 36: void init_all(){
+[; ;main.c: 35: void init_all(){
 [e :U _init_all ]
 [f ]
-[; ;main.c: 37: uart_init();
-"37
-[e ( _uart_init ..  ]
-[; ;main.c: 39: TRISB = 0xFF;
-"39
+[; ;main.c: 36: TRISB = 0xFF;
+"36
 [e = _TRISB -> -> 255 `i `uc ]
-[; ;main.c: 40: TRISC = 0x00;
-"40
+[; ;main.c: 37: TRISC = 0x00;
+"37
 [e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 42: RBIE = 1;
-"42
+[; ;main.c: 39: uart_init();
+"39
+[e ( _uart_init ..  ]
+[; ;main.c: 41: RBIE = 1;
+"41
 [e = _RBIE -> -> 1 `i `b ]
-[; ;main.c: 43: RBIF = 0;
-"43
+[; ;main.c: 42: RBIF = 0;
+"42
 [e = _RBIF -> -> 0 `i `b ]
-[; ;main.c: 45: INTE = 1;
-"45
+[; ;main.c: 44: INTE = 1;
+"44
 [e = _INTE -> -> 1 `i `b ]
-[; ;main.c: 46: INTEDG = 1;
-"46
+[; ;main.c: 45: INTEDG = 1;
+"45
 [e = _INTEDG -> -> 1 `i `b ]
-[; ;main.c: 48: GIE = 1;
+[; ;main.c: 48: }
 "48
-[e = _GIE -> -> 1 `i `b ]
-[; ;main.c: 49: }
-"49
 [e :UE 10 ]
 }
-"52
+"51
 [v _process `(v 1 ef ]
 {
-[; ;main.c: 52: void process(){
+[; ;main.c: 51: void process(){
 [e :U _process ]
 [f ]
-"53
+"52
 [v _start `uc 1 a ]
-[; ;main.c: 53: char start = '$';
+[; ;main.c: 52: char start = '$';
 [e = _start -> -> 36 `ui `uc ]
-[; ;main.c: 55: uart_putc(start);
-"55
+[; ;main.c: 53: uart_putc(start);
+"53
 [e ( _uart_putc (1 _start ]
-[; ;main.c: 56: _delay((unsigned long)((100)*(4000000/4000.0)));
-"56
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main.c: 57: }
-"57
+[; ;main.c: 54: _delay((unsigned long)((10)*(10000000/4000.0)));
+"54
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
+[; ;main.c: 55: }
+"55
 [e :UE 11 ]
 }
-"60
-[v _receive_data `(v 1 ef ]
+"57
+[v _blink_led `(v 1 ef ]
 {
-[; ;main.c: 60: void receive_data(){
-[e :U _receive_data ]
+[; ;main.c: 57: void blink_led(){
+[e :U _blink_led ]
 [f ]
-[; ;main.c: 61: }
+[; ;main.c: 58: RC3 = 1;
+"58
+[e = _RC3 -> -> 1 `i `b ]
+[; ;main.c: 59: _delay((unsigned long)((50)*(10000000/4000.0)));
+"59
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
+[; ;main.c: 60: RC3 = 0;
+"60
+[e = _RC3 -> -> 0 `i `b ]
+[; ;main.c: 61: _delay((unsigned long)((50)*(10000000/4000.0)));
 "61
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
+[; ;main.c: 62: }
+"62
 [e :UE 12 ]
 }
 "64
-[v _sleep_all `(v 1 ef ]
+[v _receive_data `(v 1 ef ]
 {
-[; ;main.c: 64: void sleep_all(){
-[e :U _sleep_all ]
+[; ;main.c: 64: void receive_data(){
+[e :U _receive_data ]
 [f ]
-[; ;main.c: 65: RC2 = 1;
+[; ;main.c: 65: }
 "65
-[e = _RC2 -> -> 1 `i `b ]
-[; ;main.c: 66: asm("sleep");
-"66
-[; sleep ;#
-[; ;main.c: 67: }
-"67
 [e :UE 13 ]
 }
-"70
-[v F738 `(v 1 tf ]
-[v _isr `IF738 1 s ]
+"68
+[v _sleep_all `(v 1 ef ]
 {
-[; ;main.c: 70: static void interrupt isr(){
-[e :U _isr ]
+[; ;main.c: 68: void sleep_all(){
+[e :U _sleep_all ]
 [f ]
-[; ;main.c: 71: if (RBIF){
+[; ;main.c: 69: RC2 = 1;
+"69
+[e = _RC2 -> -> 1 `i `b ]
+[; ;main.c: 70: asm("sleep");
+"70
+[; sleep ;#
+[; ;main.c: 71: }
 "71
-[e $ ! _RBIF 15  ]
-{
-[; ;main.c: 72: RB4 = 1;
-"72
-[e = _RB4 -> -> 1 `i `b ]
-[; ;main.c: 73: RBIF = 0;
-"73
-[e = _RBIF -> -> 0 `i `b ]
-[; ;main.c: 74: RC2 = 0;
-"74
-[e = _RC2 -> -> 0 `i `b ]
-"75
-}
-[e :U 15 ]
-[; ;main.c: 75: }
-[; ;main.c: 77: if(INTF) {
-"77
-[e $ ! _INTF 16  ]
-{
-[; ;main.c: 78: INTF = 0;
-"78
-[e = _INTF -> -> 0 `i `b ]
-[; ;main.c: 79: signal_mode = RB2;
-"79
-[e = _signal_mode _RB2 ]
-[; ;main.c: 80: RC0 = !RC0;
-"80
-[e = _RC0 ! _RC0 ]
-"81
-}
-[e :U 16 ]
-[; ;main.c: 81: }
-[; ;main.c: 82: }
-"82
 [e :UE 14 ]
 }
+"74
+[v F743 `(v 1 tf ]
+[v _isr `IF743 1 s ]
+{
+[; ;main.c: 74: static void interrupt isr(){
+[e :U _isr ]
+[f ]
+[; ;main.c: 75: if (RBIF){
+"75
+[e $ ! _RBIF 16  ]
+{
+[; ;main.c: 76: RB4 = 1;
+"76
+[e = _RB4 -> -> 1 `i `b ]
+[; ;main.c: 77: RBIF = 0;
+"77
+[e = _RBIF -> -> 0 `i `b ]
+[; ;main.c: 78: RC2 = 0;
+"78
+[e = _RC2 -> -> 0 `i `b ]
+[; ;main.c: 79: RC4 = 1;
+"79
+[e = _RC4 -> -> 1 `i `b ]
+"80
+}
+[e :U 16 ]
+[; ;main.c: 80: }
+[; ;main.c: 82: if(INTF) {
+"82
+[e $ ! _INTF 17  ]
+{
+[; ;main.c: 83: INTF = 0;
+"83
+[e = _INTF -> -> 0 `i `b ]
+[; ;main.c: 84: signal_mode = RB2;
+"84
+[e = _signal_mode _RB2 ]
+[; ;main.c: 85: RC3 = 1;
+"85
+[e = _RC3 -> -> 1 `i `b ]
+"86
+}
+[e :U 17 ]
+[; ;main.c: 86: }
+[; ;main.c: 87: }
+"87
+[e :UE 15 ]
+}
+[a 1C 87 101 108 99 111 109 101 32 116 111 32 71 83 83 32 71 114 111 117 112 13 10 0 ]
+

@@ -1,5 +1,5 @@
 
-# 1 "F:\Learning\CPro\Source\ES\Code\Firmware\uart.c"
+# 1 "D:\DoAn\ES\Code\Firmware\uart.c"
 
 # 19 "C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\include\pic168xa.h"
 volatile unsigned char INDF @ 0x00;
@@ -334,21 +334,22 @@ extern void _delay(unsigned long);
 extern bit __timeout, __powerdown;
 extern unsigned char __resetbits;
 
-# 12 "F:\Learning\CPro\Source\ES\Code\Firmware\uart.h"
+# 12 "D:\DoAn\ES\Code\Firmware\uart.h"
 void uart_init();
 void uart_putc(char c);
+void uart_putn(unsigned char c);
 void uart_puts(const char *s);
 char uart_data_ready();
 char uart_getc();
 void uart_gets(char *s);
 
-# 4 "F:\Learning\CPro\Source\ES\Code\Firmware\uart.c"
+# 4 "D:\DoAn\ES\Code\Firmware\uart.c"
 void uart_init()
 {
 
-# 51
-SPBRG=(4000000/(16UL * 1200))-1;
-BRGH=1;
+# 89
+SPBRG=(10000000/(16UL * 19200))-1;
+BRGH= 1;
 SYNC=0;
 SPEN=1;
 CREN=1;
@@ -359,19 +360,19 @@ TX9=0;
 RX9=0;
 TXEN=0;
 TXEN=1;
+TRISC6 = 0;
+TRISC7 = 1;
 }
 
 void uart_putc(char c){
 while(!TXIF);
 TXREG = c;
-
 }
 
 void uart_puts(const char* s){
 while(*s != '\0'){
 uart_putc(*s);
 s++;
-_delay((unsigned long)((60)*(4000000/4000000.0)));
 }
 }
 char uart_getc(){

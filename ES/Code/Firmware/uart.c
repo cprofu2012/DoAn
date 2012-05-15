@@ -58,7 +58,7 @@ void uart_init()
 		#if BRGH_SET==0
   		#assert SPBRG_SET==7
     #elif BRGH_SET==1
-  		#assert SPBRG_SET==31
+  		#assert SPBRG_SET==31						///////////////
     #else
       #error
     #endif
@@ -87,7 +87,7 @@ void uart_init()
 	#endif
 
 	SPBRG=SPBRG_SET;
-	BRGH=BRGH_SET;	  //data rate for sending/receiving
+	BRGH= BRGH_SET;	  //data rate for sending/receiving
 	SYNC=0;						//asynchronous
 	SPEN=1;						//enable serial port pins
 	CREN=1;						//enable reception

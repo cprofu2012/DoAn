@@ -23,7 +23,7 @@ Linker command line:
   -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA \
   -DEEDATA=2 -pfloat_text0=CODE,float_text1=CODE,float_text2=CODE \
   -pfloat_text3=CODE,float_text4=CODE -DCODE=2 \
-  C:\Users\ducvuong\AppData\Local\Temp\s58g.obj Firmware.obj 
+  C:\Users\ducvuong\AppData\Local\Temp\s3ec.obj Firmware.obj 
 
 Object code version is 3.10
 
@@ -31,14 +31,19 @@ Machine type is 16F876A
 
 Call graph: (fully expanded)
 
-*_main size 0,2 offset 0
-*    _init_all size 0,0 offset 2
-*        _uart_init size 0,0 offset 2
+*_main size 0,3 offset 0
+     _init_all size 0,0 offset 3
+         _uart_init size 0,0 offset 3
+*    _uart_puts size 0,1 offset 3
+*        _uart_putc size 0,1 offset 4
+     _uart_getc size 0,0 offset 3
+*    _blink_led size 0,2 offset 3
+*    _uart_putc size 0,1 offset 4
 
 Estimated maximum call depth: 2
 
-*intlevel1 size 0,0 offset 2
-*    _isr size 0,2 offset 2
+*intlevel1 size 0,0 offset 5
+*    _isr size 0,2 offset 5
 
 Estimated maximum call depth: 1
 
@@ -46,25 +51,33 @@ Estimated maximum call depth: 1
 
 
                 Name          Link     Load   Length Selector   Space       Scale
-C:\Users\ducvuong\AppData\Local\Temp\s58g.obj
+C:\Users\ducvuong\AppData\Local\Temp\s3ec.obj
                 end_init         C        C        3       8     0
                 reset_vec        0        0        3       0     0
 Firmware.obj    intentry         4        4        8       8     0
-                maintext         F        F       1E       8     0
+                strings        100      100       26       2     0
+                maintext         F        F       1D       8     0
                 config        2007     2007        1    400E     0
-                intrtext        4D       4D       16       8     0
-                text39          2D       2D       20       8     0
+                intrtext       179      179       16       2     0
+                text84         126      126       20       2     0
+                text83         146      146       1C       2     0
+                text82         162      162       17       2     0
+                text81         18F      18F        5       2     0
 
-COMMON          fnautoc         75       75        4      75     1
+COMMON          fnautoc         72       72        7      72     1
 
 TOTAL           Name          Link     Load   Length     Space
         CLASS   CODE           
                 intentry         4        4        8     0
+                strings        100      100       26     0
                 end_init         C        C        3     0
-                maintext         F        F       1E     0
+                maintext         F        F       1D     0
                 reset_vec        0        0        3     0
-                intrtext        4D       4D       16     0
-                text39          2D       2D       20     0
+                intrtext       179      179       16     0
+                text84         126      126       20     0
+                text83         146      146       1C     0
+                text82         162      162       17     0
+                text81         18F      18F        5     0
 
         CLASS   CONST          
 
@@ -75,7 +88,7 @@ TOTAL           Name          Link     Load   Length     Space
         CLASS   RAM            
 
         CLASS   ABS1           
-                abs_s1          74       74        1     1
+                abs_s1          71       71        1     1
                 abs_s1          7E       7E        2     1
 
         CLASS   BANK0          
@@ -87,7 +100,7 @@ TOTAL           Name          Link     Load   Length     Space
         CLASS   BANK3          
 
         CLASS   COMMON         
-                fnautoc         75       75        4     1
+                fnautoc         72       72        7     1
 
         CLASS   CONFIG         
                 config        2007     2007        1     0
@@ -101,40 +114,50 @@ TOTAL           Name          Link     Load   Length     Space
 SEGMENTS        Name            Load    Length   Top    Selector    Space      Class      Delta
 
                 reset_vec       000000  000003  000003         0       0  CODE        2
-                intentry        000004  00005F  000063         8       0  CODE        2
-                temp            000075  000004  000079        75       1  COMMON      1
+                intentry        000004  000028  00002C         8       0  CODE        2
+                temp            000072  000007  000079        72       1  COMMON      1
+                strings         000100  000094  000194         2       0  CODE        2
                 config          002007  000001  002008      400E       0  CONFIG      2
 
 
 UNUSED ADDRESS RANGES
 
-        BANK0            0020-0073     1
+        BANK0            0020-0070     1
                          0079-007D
         BANK1            00A0-00EF     1
         BANK2            0110-016F     1
         BANK3            0190-01EF     1
         CODE             0003-0003     2
-                         0063-1FFF
-        COMMON           0070-0073     1
+                         002C-00FF
+                         0194-1FFF
+        COMMON           0070-0070     1
                          0079-007D
         CONST            0006-0007     1
-                         00C6-1FFF
+                         0058-01FF
+                         0328-1FFF
         EEDATA           2100-21FF     2
         ENTRY            0006-0007     1
-                         00C6-1FFF
+                         0058-01FF
+                         0328-1FFF
         IDLOC            2000-2003     2
-        RAM              00C6-00EF     1
+        RAM              0058-006F     1
+                         00A0-00EF
                          0110-016F
                          0190-01EF
         STRING           0006-0007     1
-                         00C6-1FFF
+                         0058-01FF
+                         0328-1FFF
 
                                   Symbol Table
 
-??_init_all        fnautoc     0077  ??_isr             fnautoc     0077
-??_main            fnautoc     0075  ??_uart_init       fnautoc     0077
-?_init_all         fnautoc     0077  ?_isr              fnautoc     0077
-?_main             fnautoc     0075  ?_uart_init        fnautoc     0077
+??_blink_led       fnautoc     0075  ??_init_all        fnautoc     0075
+??_isr             fnautoc     0077  ??_main            fnautoc     0072
+??_uart_getc       fnautoc     0075  ??_uart_init       fnautoc     0075
+??_uart_putc       fnautoc     0076  ??_uart_puts       fnautoc     0075
+?_blink_led        fnautoc     0075  ?_init_all         fnautoc     0075
+?_isr              fnautoc     0077  ?_main             fnautoc     0072
+?_uart_getc        fnautoc     0075  ?_uart_init        fnautoc     0075
+?_uart_putc        fnautoc     0076  ?_uart_puts        fnautoc     0075
 _ACKDT             (abs)       048D  _ACKEN             (abs)       048C
 _ACKSTAT           (abs)       048E  _ADCON0            (abs)       001F
 _ADCON1            (abs)       009F  _ADCS0             (abs)       00FE
@@ -258,85 +281,93 @@ _TXREG             (abs)       0019  _TXSTA             (abs)       0098
 _UA                (abs)       04A1  _WCOL              (abs)       00A7
 _WR                (abs)       0C61  _WREN              (abs)       0C62
 _WRERR             (abs)       0C63  _ZERO              (abs)       001A
-__Beeprom_data     eeprom_data 2100  __Bnvbit_0         nvbit_0     005A
+__Beeprom_data     eeprom_data 2100  __Bnvbit_0         nvbit_0     024C
 __Bnvbit_1         nvbit_1     00A0  __Bnvbit_2         nvbit_2     0110
-__Bnvbit_3         nvbit_3     0190  __Bptbit_0         ptbit_0     005A
-__Brbit_0          rbit_0      0075  __Brbit_1          rbit_1      00A0
+__Bnvbit_3         nvbit_3     0190  __Bptbit_0         ptbit_0     024C
+__Brbit_0          rbit_0      0072  __Brbit_1          rbit_1      00A0
 __Brbit_2          rbit_2      0110  __Brbit_3          rbit_3      0190
-__Hclrtext         clrtext     000F  __Hcode            code        005A
-__Hcommon          common      0075  __Hconfig          config      2008
+__Hclrtext         clrtext     000F  __Hcode            code        024C
+__Hcommon          common      0072  __Hconfig          config      2008
 __Heeprom_data     eeprom_data 0000  __Hend_init        end_init    000F
-__Hfloat_text0     float_text0 002D  __Hfloat_text1     float_text1 002D
-__Hfloat_text2     float_text2 002D  __Hfloat_text3     float_text3 002D
-__Hfloat_text4     float_text4 002D  __Hfnauto0         fnauto0     0079
+__Hfloat_text0     float_text0 0126  __Hfloat_text1     float_text1 0126
+__Hfloat_text2     float_text2 0126  __Hfloat_text3     float_text3 0126
+__Hfloat_text4     float_text4 0126  __Hfnauto0         fnauto0     0079
 __Hfnauto1         fnauto1     00A0  __Hfnauto2         fnauto2     0110
 __Hfnauto3         fnauto3     0190  __Hfnautoc         fnautoc     0079
-__Hidata           idata       002D  __Hidata_0         idata_0     002D
-__Hidata_1         idata_1     002D  __Hidata_2         idata_2     002D
-__Hidata_3         idata_3     002D  __Hidloc           idloc       2000
+__Hidata           idata       0126  __Hidata_0         idata_0     0126
+__Hidata_1         idata_1     0126  __Hidata_2         idata_2     0126
+__Hidata_3         idata_3     0126  __Hidloc           idloc       2000
 __Hinit            init        000C  __Hinit23          init23      000C
 __Hintcode         intcode     000C  __Hintentry        intentry    000C
-__Hintret          intret      000C  __Hintrtext        intrtext    005A
-__Hintsave         intsave     005A  __Hintsave_1       intsave_1   005A
-__Hintsave_2       intsave_2   005A  __Hintsave_3       intsave_3   005A
-__Hmaintext        maintext    002D  __Hnvbit_0         nvbit_0     02D0
+__Hintret          intret      000C  __Hintrtext        intrtext    024C
+__Hintsave         intsave     024C  __Hintsave_1       intsave_1   024C
+__Hintsave_2       intsave_2   024C  __Hintsave_3       intsave_3   024C
+__Hmaintext        maintext    002C  __Hnvbit_0         nvbit_0     1260
 __Hnvbit_1         nvbit_1     0500  __Hnvbit_2         nvbit_2     0880
-__Hnvbit_3         nvbit_3     0C80  __Hnvram           nvram       0075
+__Hnvbit_3         nvbit_3     0C80  __Hnvram           nvram       0072
 __Hnvram_1         nvram_1     00A0  __Hnvram_2         nvram_2     0110
-__Hnvram_3         nvram_3     0190  __Hpowerup         powerup     002D
-__Hpstrings        pstrings    002D  __Hptbit_0         ptbit_0     02D0
-__Hramdata         (abs)       0001  __Hrbit_0          rbit_0      03A8
+__Hnvram_3         nvram_3     0190  __Hpowerup         powerup     0126
+__Hpstrings        pstrings    002C  __Hptbit_0         ptbit_0     1260
+__Hramdata         (abs)       0001  __Hrbit_0          rbit_0      0390
 __Hrbit_1          rbit_1      0500  __Hrbit_2          rbit_2      0880
-__Hrbit_3          rbit_3      0C80  __Hrbss_0          rbss_0      0075
+__Hrbit_3          rbit_3      0C80  __Hrbss_0          rbss_0      0072
 __Hrbss_1          rbss_1      00A0  __Hrbss_2          rbss_2      0110
 __Hrbss_3          rbss_3      0190  __Hrdata_0         (abs)       0001
 __Hrdata_1         rdata_1     00A0  __Hrdata_2         rdata_2     0110
 __Hrdata_3         rdata_3     0190  __Hreset_vec       reset_vec   0003
-__Hstrings         strings     0100  __Hstruct          struct      0079
-__Htemp            temp        0075  __Htext            text        005A
-__Lclrtext         clrtext     000F  __Lcode            code        005A
-__Lcommon          common      0075  __Lconfig          config      2007
+__Hstrings         strings     0126  __Hstruct          struct      0079
+__Htemp            temp        0072  __Htext            text        024C
+__Lclrtext         clrtext     000F  __Lcode            code        024C
+__Lcommon          common      0072  __Lconfig          config      2007
 __Leeprom_data     eeprom_data 0000  __Lend_init        end_init    000C
-__Lfloat_text0     float_text0 002D  __Lfloat_text1     float_text1 002D
-__Lfloat_text2     float_text2 002D  __Lfloat_text3     float_text3 002D
-__Lfloat_text4     float_text4 002D  __Lfnauto0         fnauto0     0079
+__Lfloat_text0     float_text0 0126  __Lfloat_text1     float_text1 0126
+__Lfloat_text2     float_text2 0126  __Lfloat_text3     float_text3 0126
+__Lfloat_text4     float_text4 0126  __Lfnauto0         fnauto0     0079
 __Lfnauto1         fnauto1     00A0  __Lfnauto2         fnauto2     0110
-__Lfnauto3         fnauto3     0190  __Lfnautoc         fnautoc     0075
-__Lidata           idata       002D  __Lidata_0         idata_0     002D
-__Lidata_1         idata_1     002D  __Lidata_2         idata_2     002D
-__Lidata_3         idata_3     002D  __Lidloc           idloc       2000
+__Lfnauto3         fnauto3     0190  __Lfnautoc         fnautoc     0072
+__Lidata           idata       0126  __Lidata_0         idata_0     0126
+__Lidata_1         idata_1     0126  __Lidata_2         idata_2     0126
+__Lidata_3         idata_3     0126  __Lidloc           idloc       2000
 __Linit            init        000C  __Linit23          init23      000C
 __Lintcode         intcode     000C  __Lintentry        intentry    0004
-__Lintret          intret      000C  __Lintrtext        intrtext    005A
-__Lintsave         intsave     005A  __Lintsave_1       intsave_1   005A
-__Lintsave_2       intsave_2   005A  __Lintsave_3       intsave_3   005A
-__Lmaintext        maintext    000F  __Lnvbit_0         nvbit_0     02D0
+__Lintret          intret      000C  __Lintrtext        intrtext    024C
+__Lintsave         intsave     024C  __Lintsave_1       intsave_1   024C
+__Lintsave_2       intsave_2   024C  __Lintsave_3       intsave_3   024C
+__Lmaintext        maintext    000F  __Lnvbit_0         nvbit_0     1260
 __Lnvbit_1         nvbit_1     0500  __Lnvbit_2         nvbit_2     0880
-__Lnvbit_3         nvbit_3     0C80  __Lnvram           nvram       0075
+__Lnvbit_3         nvbit_3     0C80  __Lnvram           nvram       0072
 __Lnvram_1         nvram_1     00A0  __Lnvram_2         nvram_2     0110
-__Lnvram_3         nvram_3     0190  __Lpowerup         powerup     002D
-__Lpstrings        pstrings    002D  __Lptbit_0         ptbit_0     02D0
-__Lramdata         (abs)       0000  __Lrbit_0          rbit_0      03A8
+__Lnvram_3         nvram_3     0190  __Lpowerup         powerup     0126
+__Lpstrings        pstrings    002C  __Lptbit_0         ptbit_0     1260
+__Lramdata         (abs)       0000  __Lrbit_0          rbit_0      0390
 __Lrbit_1          rbit_1      0500  __Lrbit_2          rbit_2      0880
-__Lrbit_3          rbit_3      0C80  __Lrbss_0          rbss_0      0075
+__Lrbit_3          rbit_3      0C80  __Lrbss_0          rbss_0      0072
 __Lrbss_1          rbss_1      00A0  __Lrbss_2          rbss_2      0110
 __Lrbss_3          rbss_3      0190  __Lrdata_0         (abs)       0000
 __Lrdata_1         rdata_1     00A0  __Lrdata_2         rdata_2     0110
 __Lrdata_3         rdata_3     0190  __Lreset_vec       reset_vec   0000
 __Lstrings         strings     0100  __Lstruct          struct      0079
-__Ltemp            temp        0075  __Ltext            text        005A
+__Ltemp            temp        0072  __Ltext            text        024C
 __S0               (abs)       2008  __S1               (abs)       0190
 __S2               (abs)       2100  __databank         (abs)       0000
-__end_of_init_all  text39      003A  __end_of_isr       intrtext    0063
-__end_of_main      maintext    002D  __end_of_uart_init text41      0063
-__tempreg          (abs)       0075  _exit              init        000C
-_init_all          text39      002D  _isr               intrtext    004D
-_main              maintext    000F  _signal_mode       (abs)       03A0
-_uart_init         text39      003A  btemp              (abs)       007E
+__end_of_blink_led text83      0146  __end_of_init_all  text83      015A
+__end_of_isr       intrtext    018F  __end_of_main      maintext    002C
+__end_of_uart_getc text82      0162  __end_of_uart_init text87      0194
+__end_of_uart_putc text84      0132  __end_of_uart_puts text84      0126
+__stringbase       strings     010E  __tempreg          (abs)       0072
+_blink_led         text82      0162  _exit              init        000C
+_init_all          text84      0126  _isr               intrtext    0179
+_main              maintext    000F  _main_c            fnautoc     0072
+_signal_mode       (abs)       0388  _uart_getc         text81      018F
+_uart_init         text84      0132  _uart_putc         text83      015A
+_uart_putc_c       fnautoc     0076  _uart_puts         text83      0146
+_uart_puts_s       fnautoc     0075  btemp              (abs)       007E
 interrupt_function intentry    0004  intlevel0          intentry    0004
 intlevel1          intentry    0004  intlevel2          intentry    0004
 intlevel3          intentry    0004  intlevel4          intentry    0004
 intlevel5          intentry    0004  ltemp0             (abs)       007E
 reset_vec          reset_vec   0000  saved_w            (abs)       007F
-start              init        000C  ttemp0             (abs)       007E
-wtemp0             (abs)       007E  wtemp1             (abs)       0080
+start              init        000C  stringdir          strings     0109
+stringjmp          strings     010D  stringtab          strings     0100
+ttemp0             (abs)       007E  wtemp0             (abs)       007E
+wtemp1             (abs)       0080  
