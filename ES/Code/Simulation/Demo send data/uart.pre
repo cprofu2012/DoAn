@@ -1,5 +1,5 @@
 
-# 1 "D:\DoAn\ES\Code\Firmware\uart.c"
+# 1 "D:\DoAn\ES\Code\Simulation\Demo Firmware_uart_876a\uart.c"
 
 # 19 "C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\include\pic168xa.h"
 volatile unsigned char INDF @ 0x00;
@@ -334,21 +334,20 @@ extern void _delay(unsigned long);
 extern bit __timeout, __powerdown;
 extern unsigned char __resetbits;
 
-# 20 "D:\DoAn\ES\Code\Firmware\uart.h"
-void h_uart_init();
-void h_uart_putc(char char_out);
-void h_uart_puts(const char* str_out);
+# 12 "D:\DoAn\ES\Code\Simulation\Demo Firmware_uart_876a\uart.h"
+void uart_init();
+void uart_putc(char c);
+void uart_puthex(unsigned char c);
+void uart_puts(const char *s);
+char uart_data_ready();
+char uart_getc();
+void uart_gets(char *s);
 
-char s_uart_getc();
-void s_uart_gets(char* str_in);
-
-# 4 "D:\DoAn\ES\Code\Firmware\uart.c"
-void h_uart_init()
+# 4 "D:\DoAn\ES\Code\Simulation\Demo Firmware_uart_876a\uart.c"
+void uart_init()
 {
-
-# 62
-SPBRG=(10000000/(16UL * 19200))-1;
-BRGH= 1;
+SPBRG=129;
+BRGH=0;
 SYNC=0;
 SPEN=1;
 CREN=1;
@@ -363,14 +362,31 @@ TRISC6 = 0;
 TRISC7 = 1;
 }
 
-void h_uart_putc(char char_out){
+void uart_putc(char c){
 while(!TXIF);
-TXREG = char_out;
+TXREG = c;
 }
 
-void h_uart_puts(const char* str_out){
-while(*str_out != '\0'){
-h_uart_putc(*str_out);
-str_out++;
+void uart_puts(const char* s){
+while(*s != '\0'){
+uart_putc(*s);
+s++;
 }
+}
+void uart_puthex(unsigned char c){
+unsigned char temp;
+
+
+
+temp=c;
+
+c=(c >> 4);
+if (c<10) c+=48; else c+=55;
+uart_putc(c);
+
+c=temp;
+
+c=(c & 0x0F);
+if (c<10) c+=48; else c+=55;
+uart_putc(c);
 }

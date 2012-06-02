@@ -491,24 +491,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _WR `Vb 1 e@3169 ]
 "392 C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\include\pic168xa.h
 [v _RD `Vb 1 e@3168 ]
-"16 D:\DoAn\ES\Code\Firmware\main.c
-[v _signal_mode `b 1 e ]
 [p mainexit ]
-"11 D:\DoAn\ES\Code\Firmware\main.c
-[v _init_all `(v 0 ef ]
-"22 D:\DoAn\ES\Code\Firmware\uart.h
-[v _h_uart_puts `(v 0 ef1`*Cuc ]
+"12 D:\DoAn\ES\Code\Simulation\Demo Firmware_uart_876a\uart.h
+[v _uart_init `(v 0 ef ]
+"15 D:\DoAn\ES\Code\Simulation\Demo Firmware_uart_876a\uart.h
+[v _uart_puts `(v 0 ef1`*Cuc ]
 "381 C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\include\pic.h
 [v __delay `(v 0 ef1`ul ]
 [p i __delay ]
-"14 D:\DoAn\ES\Code\Firmware\main.c
-[v _sleep_all `(v 0 ef ]
-"24 D:\DoAn\ES\Code\Firmware\uart.h
-[v _s_uart_getc `(uc 0 ef ]
-"21 D:\DoAn\ES\Code\Firmware\uart.h
-[v _h_uart_putc `(v 0 ef1`uc ]
-"20 D:\DoAn\ES\Code\Firmware\uart.h
-[v _h_uart_init `(v 0 ef ]
 [; ;pic168xa.h: 19: volatile unsigned char INDF @ 0x00;
 [; ;pic168xa.h: 20: volatile unsigned char TMR0 @ 0x01;
 [; ;pic168xa.h: 21: volatile unsigned char PCL @ 0x02;
@@ -870,185 +860,102 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;string.h: 63: extern const char * strichr(const char *, int);
 [; ;string.h: 64: extern const char * strrchr(const char *, int);
 [; ;string.h: 65: extern const char * strrichr(const char *, int);
-[; ;uart.h: 20: void h_uart_init();
-[; ;uart.h: 21: void h_uart_putc(char char_out);
-[; ;uart.h: 22: void h_uart_puts(const char* str_out);
-[; ;uart.h: 24: char s_uart_getc();
-[; ;uart.h: 25: void s_uart_gets(char* str_in);
-"7 D:\DoAn\ES\Code\Firmware\main.c
+[; ;uart.h: 12: void uart_init();
+[; ;uart.h: 13: void uart_putc(char c);
+[; ;uart.h: 14: void uart_puthex(unsigned char c);
+[; ;uart.h: 15: void uart_puts(const char *s);
+[; ;uart.h: 16: char uart_data_ready();
+[; ;uart.h: 17: char uart_getc();
+[; ;uart.h: 18: void uart_gets(char *s);
+"7 D:\DoAn\ES\Code\Simulation\Demo Firmware_uart_876a\main.c
 [; ;main.c: 7: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x3FFE & 0x3FFB& 0x3F7F");
 [; 	psect config,class=CONFIG,delta=2 ;#
 [; 	dw 0x3FFE & 0x3FFB& 0x3F7F ;#
-[; ;main.c: 11: void init_all();
-[; ;main.c: 12: void process();
-[; ;main.c: 13: void receive_data();
-[; ;main.c: 14: void sleep_all();
-[; ;main.c: 15: void turn_led(unsigned char led_status);
-[i _signal_mode
-"16
--> 0 `i
-]
-[; ;main.c: 16: bit signal_mode = 0;
-"20
+"11
 [v _main `(v 1 ef ]
 {
-[; ;main.c: 19: void main()
-[; ;main.c: 20: {
+[; ;main.c: 10: void main()
+[; ;main.c: 11: {
 [e :U _main ]
 [f ]
-[; ;main.c: 21: init_all();
+[; ;main.c: 12: PORTB = 0;
+"12
+[e = _PORTB -> -> 0 `i `uc ]
+[; ;main.c: 13: TRISB = 0;
+"13
+[e = _TRISB -> -> 0 `i `uc ]
+[; ;main.c: 14: TRISB0 = 1;
+"14
+[e = _TRISB0 -> -> 1 `i `b ]
+[; ;main.c: 15: TRISC = 0;
+"15
+[e = _TRISC -> -> 0 `i `uc ]
+[; ;main.c: 16: PORTC = 0;
+"16
+[e = _PORTC -> -> 0 `i `uc ]
+[; ;main.c: 19: INTE = 1;
+"19
+[e = _INTE -> -> 1 `i `b ]
+[; ;main.c: 20: INTEDG = 1;
+"20
+[e = _INTEDG -> -> 1 `i `b ]
+[; ;main.c: 21: GIE = 1;
 "21
-[e ( _init_all ..  ]
-[; ;main.c: 23: h_uart_puts("start\r\n");
+[e = _GIE -> -> 1 `i `b ]
+[; ;main.c: 23: uart_init();
 "23
-[e ( _h_uart_puts (1 :s 1C ]
-[; ;main.c: 24: _delay((unsigned long)((10)*(10000000/4000.0)));
+[e ( _uart_init ..  ]
+[; ;main.c: 24: RB2 = 0;
 "24
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
-[; ;main.c: 26: sleep_all();
-"26
-[e ( _sleep_all ..  ]
-[; ;main.c: 27: h_uart_puts("wakeup\r\n");
-"27
-[e ( _h_uart_puts (1 :s 2C ]
-[; ;main.c: 29: while(1){
+[e = _RB2 -> -> 0 `i `b ]
+[; ;main.c: 28: asm("sleep");
+"28
+[; sleep ;#
+[; ;main.c: 29: while (1){
 "29
 [e :U 8 ]
 {
+[; ;main.c: 30: uart_puts("demo soft uart\r\n");
 "30
-[v _c `uc 1 a ]
-[; ;main.c: 30: char c = s_uart_getc();
-[e = _c ( _s_uart_getc ..  ]
-[; ;main.c: 31: h_uart_putc(c);
+[e ( _uart_puts (1 :s 1C ]
+[; ;main.c: 31: _delay((unsigned long)((10)*(10000000/4000.0)));
 "31
-[e ( _h_uart_putc (1 _c ]
-"33
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
+"32
 }
 [e :U 7 ]
 "29
 [e $U 8  ]
 [e :U 9 ]
+[; ;main.c: 32: }
 [; ;main.c: 33: }
-[; ;main.c: 34: }
-"34
+"33
 [e :UE 6 ]
 }
-"36
-[v F737 `(v 1 tf ]
-[v _isr `IF737 1 s ]
+"34
+[v F732 `(v 1 tf ]
+[v _isr `IF732 1 e ]
 {
-[; ;main.c: 36: static void interrupt isr(){
+[; ;main.c: 34: void interrupt isr(){
 [e :U _isr ]
 [f ]
-[; ;main.c: 37: if (RBIF){
-"37
-[e $ ! _RBIF 11  ]
+[; ;main.c: 35: if (INTF){
+"35
+[e $ ! _INTF 11  ]
 {
-[; ;main.c: 38: RB4 = 1;
-"38
-[e = _RB4 -> -> 1 `i `b ]
-[; ;main.c: 39: RBIF = 0;
+[; ;main.c: 36: INTF =0;
+"36
+[e = _INTF -> -> 0 `i `b ]
+[; ;main.c: 37: RB2 = 1;
+"37
+[e = _RB2 -> -> 1 `i `b ]
 "39
-[e = _RBIF -> -> 0 `i `b ]
-[; ;main.c: 40: RC2 = 0;
-"40
-[e = _RC2 -> -> 0 `i `b ]
-[; ;main.c: 41: h_uart_puts("rb interrupt \r\n");
-"41
-[e ( _h_uart_puts (1 :s 3C ]
-"42
 }
 [e :U 11 ]
-[; ;main.c: 42: }
-[; ;main.c: 44: if(INTF) {
-"44
-[e $ ! _INTF 12  ]
-{
-[; ;main.c: 45: INTF = 0;
-"45
-[e = _INTF -> -> 0 `i `b ]
-[; ;main.c: 46: signal_mode = RB2;
-"46
-[e = _signal_mode _RB2 ]
-[; ;main.c: 47: h_uart_puts("int interrupt \r\n");
-"47
-[e ( _h_uart_puts (1 :s 4C ]
-"48
-}
-[e :U 12 ]
-[; ;main.c: 48: }
-[; ;main.c: 49: }
-"49
+[; ;main.c: 39: }
+[; ;main.c: 40: }
+"40
 [e :UE 10 ]
 }
-"52
-[v _sleep_all `(v 1 ef ]
-{
-[; ;main.c: 52: void sleep_all(){
-[e :U _sleep_all ]
-[f ]
-[; ;main.c: 53: RC2 = 1;
-"53
-[e = _RC2 -> -> 1 `i `b ]
-[; ;main.c: 54: asm("sleep");
-"54
-[; sleep ;#
-[; ;main.c: 55: }
-"55
-[e :UE 13 ]
-}
-"58
-[v _turn_led `(v 1 ef1`uc ]
-{
-[; ;main.c: 58: void turn_led(unsigned char led_status){
-[e :U _turn_led ]
-[v _led_status `uc 1 r1 ]
-[f ]
-[; ;main.c: 59: RC3 = led_status;
-"59
-[e = _RC3 -> _led_status `b ]
-[; ;main.c: 60: }
-"60
-[e :UE 14 ]
-}
-"63
-[v _init_all `(v 1 ef ]
-{
-[; ;main.c: 63: void init_all(){
-[e :U _init_all ]
-[f ]
-[; ;main.c: 64: TRISB = 0xFF;
-"64
-[e = _TRISB -> -> 255 `i `uc ]
-[; ;main.c: 65: TRISC = 0x00;
-"65
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 66: h_uart_init();
-"66
-[e ( _h_uart_init ..  ]
-[; ;main.c: 68: RBIE = 1;
-"68
-[e = _RBIE -> -> 1 `i `b ]
-[; ;main.c: 69: RBIF = 0;
-"69
-[e = _RBIF -> -> 0 `i `b ]
-[; ;main.c: 71: INTE = 1;
-"71
-[e = _INTE -> -> 1 `i `b ]
-[; ;main.c: 72: INTEDG = 1;
-"72
-[e = _INTEDG -> -> 1 `i `b ]
-[; ;main.c: 74: GIE = 1;
-"74
-[e = _GIE -> -> 1 `i `b ]
-[; ;main.c: 76: turn_led(1);
-"76
-[e ( _turn_led (1 -> -> 1 `i `uc ]
-[; ;main.c: 77: }
-"77
-[e :UE 15 ]
-}
-[a 1C 115 116 97 114 116 13 10 0 ]
-[a 2C 119 97 107 101 117 112 13 10 0 ]
-[a 4C 105 110 116 32 105 110 116 101 114 114 117 112 116 32 13 10 0 ]
-[a 3C 114 98 32 105 110 116 101 114 114 117 112 116 32 13 10 0 ]
+[a 1C 100 101 109 111 32 115 111 102 116 32 117 97 114 116 13 10 0 ]
+

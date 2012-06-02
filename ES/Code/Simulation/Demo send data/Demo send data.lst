@@ -1,0 +1,807 @@
+
+
+HI-TECH Software PICC Macro Assembler V9.65 build 4410 
+                                                      Sat Jun 02 01:01:19 2012
+
+HI-TECH Software Omniscient Code Generator build 4410
+     1                           	processor	16F876A
+     2                           	fnconf	fnautoc,??,?,0
+     3                           	opt	pw 79
+     4                           	psect	config,global,class=CONFIG,delta=2
+     5                           	psect	maintext,global,class=CODE,delta=2
+     6                           	psect	text43,local,class=CODE,delta=2
+     7                           	psect	text44,local,class=CODE,delta=2
+     8                           	psect	text46,local,class=CODE,delta=2
+     9                           	psect	intrtext,global,class=CODE,delta=2
+    10                           	psect	intentry,global,class=CODE,delta=2
+    11                           	psect	strings,global,reloc=256,class=CODE,delt
+      +                          a=2
+    12                           	psect	fnautoc,global,class=COMMON,space=1,delt
+      +                          a=1
+    13                           	dabs	1,0x7E,2
+    14  0000                     
+    15  0000                     
+    16  0000                     
+    17  0000                     
+    18  0000                     
+    19  0000                     
+    20  0000                     
+    21  0000                     
+    22  0000                     
+    23  0000                     
+    24  0000                     
+    25  0000                     
+    26  0000                     
+    27  0000                     
+    28  0000                     
+    29  0000                     
+    30  0000                     
+    31  0000                     
+    32  0000                     	;#
+    33                           
+    34                           	psect	config
+    35  2007  3F7A               	dw	16250	;#
+    36  0000                     __tempreg	set	117
+    37  0000                     
+    38  0000                     
+    39  0000                     __Lramdata	set	0
+    40  0000                     __Hramdata	set	1
+    41  0000                     
+    42  0000                     
+    43  0000                     
+    44                           
+    45                           	psect	maintext
+    46                           ;Data sizes: Strings 17, constant 0, data 0, bs
+      +                          s 0, persistent 0 stack 8
+    47                           ; *************** function _main **************
+      +                          *
+    48                           ; Defined at:
+    49                           ;		line 11 in file "D:\DoAn\ES\Code\Simulation\
+      +                          Demo Firmware_uart_876a\main.c"
+    50                           ; Parameters:
+    51                           ;		None
+    52                           ; Auto variables:
+    53                           ;		None
+    54                           ; Return value:
+    55                           ;		type: void 
+    56                           ;		size: 0
+    57                           ; Registers used:
+    58                           ;		wreg, status,2, status,0, pclath, cstack
+    59                           ; Tracked objects:
+    60                           ;		On entry : BFF/0
+    61                           ;		On exit  : BFF/0
+    62                           ;		Unchanged: 0/0
+    63                           ; Data sizes:
+    64                           ;		Autos:    0
+    65                           ;		Params:   0
+    66                           ;		Temp:     2
+    67                           ;		Total:    2
+    68                           ; This function calls:
+    69                           ;		_uart_init
+    70                           ;		_uart_puts
+    71                           ;		__delay
+    72                           ; This function is called by:
+    73                           ;		Startup code after reset
+    74                           ; This function uses a non-reentrant model
+    75                           ; 
+    76                           ;main.c: 7: asm("\tpsect config,class=CONFIG,de
+      +                          lta=2"); asm("\tdw ""0x3FFE & 0x3FFB& 0x3F7F");
+    77                           ;main.c: 10: void main()
+    78                           ;main.c: 11: {
+    79  000F                     _main:
+    80                           	opt stack 6
+    81                           ; Regs used in _main: [wreg+status,2+status,0+p
+      +                          clath+cstack]
+    82                           ;main.c: 12: PORTB = 0;
+    83  000F  0186               	clrf	6	;volatile
+    84                           ;main.c: 13: TRISB = 0;
+    85  0010  1683               	bsf	3,5	;RP0=1, select bank1
+    86  0011  0186               	clrf	6	;volatile
+    87                           ;main.c: 14: TRISB0 = 1;
+    88  0012  1406               	bsf	6,0
+    89                           ;main.c: 15: TRISC = 0;
+    90  0013  0187               	clrf	7	;volatile
+    91                           ;main.c: 16: PORTC = 0;
+    92  0014  1283               	bcf	3,5	;RP0=0, select bank0
+    93  0015  0187               	clrf	7	;volatile
+    94                           ;main.c: 19: INTE = 1;
+    95  0016  160B               	bsf	11,4
+    96                           ;main.c: 20: INTEDG = 1;
+    97  0017  1683               	bsf	3,5	;RP0=1, select bank1
+    98  0018  1701               	bsf	1,6
+    99                           ;main.c: 21: GIE = 1;
+   100  0019  1283               	bcf	3,5	;RP0=0, select bank0
+   101  001A  178B               	bsf	11,7
+   102                           ;main.c: 23: uart_init();
+   103  001B  120A  118A  213C   	fcall	_uart_init
+   104                           ;main.c: 24: RB2 = 0;
+   105  001E  1283               	bcf	3,5	;RP0=0, select bank0
+   106  001F  1106               	bcf	6,2
+   107  0020  0063               	sleep	;#
+   108                           ;main.c: 28: asm("sleep");
+   109                           ;main.c: 29: while (1){
+   110  0021                     l22:
+   111                           ;main.c: 30: uart_puts("demo soft uart\r\n");
+   112  0021  3001               	movlw	(STR_1-__stringbase)& (0+255)
+   113  0022  120A  118A  2120   	fcall	_uart_puts
+      +       120A  118A         
+   114                           ;main.c: 31: _delay((unsigned long)((10)*(10000
+      +                          000/4000.0)));
+   115  0027  3021               	movlw	33
+   116  0028  00F1               	movwf	??_main+1
+   117  0029  3076               	movlw	118
+   118  002A  00F0               	movwf	??_main
+   119  002B                     u597:
+   120  002B  0BF0               	decfsz	??_main,f
+   121  002C  282B               	goto	u597
+   122  002D  0BF1               	decfsz	??_main+1,f
+   123  002E  282B               	goto	u597
+   124  002F  0064               	clrwdt
+   125  0030  2821               	goto	l22
+   126                           ; =============== function _main ends =========
+      +                          ======
+   127  0031                     __end_of_main:
+   128                           	opt stack 0
+   129                           
+   130                           	psect	text43
+   131                           ; *************** function _uart_puts *********
+      +                          ******
+   132                           ; Defined at:
+   133                           ;		line 27 in file "D:\DoAn\ES\Code\Simulation\
+      +                          Demo Firmware_uart_876a\uart.c"
+   134                           ; Parameters:
+   135                           ;		s           	reg:   wr	type: PTR const unsig
+      +                          ned char ; Largest target is 17
+   136                           ;		 -> STR_1(17), 
+   137                           ; Auto variables:
+   138                           ;		s           	       	type: PTR const unsigne
+      +                          d char ; Largest target is 17
+   139                           ;		 -> STR_1(17), 
+   140                           ; Return value:
+   141                           ;		type: void 
+   142                           ;		size: 0
+   143                           ; Registers used:
+   144                           ;		wreg, status,2, status,0, pclath, cstack
+   145                           ; Tracked objects:
+   146                           ;		On entry : 0/0
+   147                           ;		On exit  : 0/0
+   148                           ;		Unchanged: FFFFFCFF/0
+   149                           ; Data sizes:
+   150                           ;		Autos:    1
+   151                           ;		Params:   0
+   152                           ;		Temp:     0
+   153                           ;		Total:    1
+   154                           ; This function calls:
+   155                           ;		_uart_putc
+   156                           ; This function is called by:
+   157                           ;		_main
+   158                           ; This function uses a non-reentrant model
+   159                           ; 
+   160                           ;uart.c: 27: void uart_puts(const char* s){
+   161  0120                     _uart_puts:
+   162                           	opt stack 5
+   163                           ; Regs used in _uart_puts: [wreg+status,2+statu
+      +                          s,0+pclath+cstack]
+   164                           ;_uart_puts_s stored from wreg
+   165  0120  00F2               	movwf	??_uart_puts
+   166                           ;uart.c: 28: while(*s != '\0'){
+   167  0121  292A               	goto	l7
+   168  0122                     l8:
+   169                           ;uart.c: 29: uart_putc(*s);
+   170  0122  0872               	movf	??_uart_puts,w
+   171  0123  120A  118A  2109   	fcall	stringdir
+      +       120A  118A         
+   172  0128  2134               	fcall	_uart_putc
+   173                           ;uart.c: 30: s++;
+   174  0129  0AF2               	incf	??_uart_puts,f
+   175  012A                     l7:
+   176  012A  0872               	movf	??_uart_puts,w
+   177  012B  120A  118A  2109   	fcall	stringdir
+      +       120A  118A         
+   178  0130  3800               	iorlw	0
+   179  0131  1903               	btfsc	3,2
+   180  0132  0008               	return
+   181  0133  2922               	goto	l8
+   182                           ; =============== function _uart_init ends ====
+      +                          ===========
+   183  0134                     __end_of_uart_init:
+   184                           	opt stack 0
+   185                           ; *************** function _uart_putc *********
+      +                          ******
+   186                           ; Defined at:
+   187                           ;		line 22 in file "D:\DoAn\ES\Code\Simulation\
+      +                          Demo Firmware_uart_876a\uart.c"
+   188                           ; Parameters:
+   189                           ;		c           	reg:   wr	type: unsigned char 
+   190                           ; Auto variables:
+   191                           ;		c           	       	type: unsigned char 
+   192                           ; Return value:
+   193                           ;		type: void 
+   194                           ;		size: 0
+   195                           ; Registers used:
+   196                           ;		wreg
+   197                           ; Tracked objects:
+   198                           ;		On entry : 0/0
+   199                           ;		On exit  : 300/0
+   200                           ;		Unchanged: FFFFFCFF/0
+   201                           ; Data sizes:
+   202                           ;		Autos:    1
+   203                           ;		Params:   0
+   204                           ;		Temp:     0
+   205                           ;		Total:    1
+   206                           ; This function calls:
+   207                           ;		Nothing
+   208                           ; This function is called by:
+   209                           ;		_uart_puts
+   210                           ; This function uses a non-reentrant model
+   211                           ; 
+   212                           ;uart.c: 22: void uart_putc(char c){
+   213  0134                     _uart_putc:
+   214                           	opt stack 4
+   215                           ; Regs used in _uart_putc: [wreg]
+   216                           ;_uart_putc_c stored from wreg
+   217  0134  00F3               	movwf	??_uart_putc
+   218                           ;uart.c: 23: while(!TXIF);
+   219  0135                     l3:
+   220  0135  1283               	bcf	3,5	;RP0=0, select bank0
+   221  0136  1303               	bcf	3,6	;RP2=0, select bank0
+   222  0137  1E0C               	btfss	12,4
+   223  0138  2935               	goto	l3
+   224                           ;uart.c: 24: TXREG = c;
+   225  0139  0873               	movf	??_uart_putc,w
+   226  013A  0099               	movwf	25	;volatile
+   227                           ;uart.c: 25: }
+   228  013B  0008               	return
+   229                           
+   230                           	psect	text44
+   231                           ; =============== function _uart_puts ends ====
+      +                          ===========
+   232  013C                     __end_of_uart_puts:
+   233                           	opt stack 0
+   234                           ; *************** function _uart_init *********
+      +                          ******
+   235                           ; Defined at:
+   236                           ;		line 5 in file "D:\DoAn\ES\Code\Simulation\D
+      +                          emo Firmware_uart_876a\uart.c"
+   237                           ; Parameters:
+   238                           ;		None
+   239                           ; Auto variables:
+   240                           ;		None
+   241                           ; Return value:
+   242                           ;		type: void 
+   243                           ;		size: 0
+   244                           ; Registers used:
+   245                           ;		wreg
+   246                           ; Tracked objects:
+   247                           ;		On entry : BFF/0
+   248                           ;		On exit  : BFF/100
+   249                           ;		Unchanged: FFFFFCFF/0
+   250                           ; Data sizes:
+   251                           ;		Autos:    0
+   252                           ;		Params:   0
+   253                           ;		Temp:     0
+   254                           ;		Total:    0
+   255                           ; This function calls:
+   256                           ;		Nothing
+   257                           ; This function is called by:
+   258                           ;		_main
+   259                           ; This function uses a non-reentrant model
+   260                           ; 
+   261                           ;uart.c: 4: void uart_init()
+   262                           ;uart.c: 5: {
+   263  013C                     _uart_init:
+   264                           	opt stack 5
+   265                           ; Regs used in _uart_init: [wreg]
+   266                           ;uart.c: 6: SPBRG=129;
+   267  013C  3081               	movlw	129
+   268  013D  1683               	bsf	3,5	;RP0=1, select bank1
+   269  013E  0099               	movwf	25	;volatile
+   270                           ;uart.c: 7: BRGH=0;
+   271  013F  1118               	bcf	24,2
+   272                           ;uart.c: 8: SYNC=0;
+   273  0140  1218               	bcf	24,4
+   274                           ;uart.c: 9: SPEN=1;
+   275  0141  1283               	bcf	3,5	;RP0=0, select bank0
+   276  0142  1798               	bsf	24,7
+   277                           ;uart.c: 10: CREN=1;
+   278  0143  1618               	bsf	24,4
+   279                           ;uart.c: 11: SREN=0;
+   280  0144  1298               	bcf	24,5
+   281                           ;uart.c: 12: TXIE=0;
+   282  0145  1683               	bsf	3,5	;RP0=1, select bank1
+   283  0146  120C               	bcf	12,4
+   284                           ;uart.c: 13: RCIE=0;
+   285  0147  128C               	bcf	12,5
+   286                           ;uart.c: 14: TX9=0;
+   287  0148  1318               	bcf	24,6
+   288                           ;uart.c: 15: RX9=0;
+   289  0149  1283               	bcf	3,5	;RP0=0, select bank0
+   290  014A  1318               	bcf	24,6
+   291                           ;uart.c: 16: TXEN=0;
+   292  014B  1683               	bsf	3,5	;RP0=1, select bank1
+   293  014C  1298               	bcf	24,5
+   294                           ;uart.c: 17: TXEN=1;
+   295  014D  1698               	bsf	24,5
+   296                           ;uart.c: 18: TRISC6 = 0;
+   297  014E  1307               	bcf	7,6
+   298                           ;uart.c: 19: TRISC7 = 1;
+   299  014F  1787               	bsf	7,7
+   300                           ;uart.c: 20: }
+   301  0150  0008               	return
+   302                           
+   303                           	psect	text46
+   304                           ; =============== function _uart_putc ends ====
+      +                          ===========
+   305  015E                     __end_of_uart_putc:
+   306                           	opt stack 0
+   307                           
+   308                           	psect	intrtext
+   309                           ; *************** function _isr ***************
+   310                           ; Defined at:
+   311                           ;		line 34 in file "D:\DoAn\ES\Code\Simulation\
+      +                          Demo Firmware_uart_876a\main.c"
+   312                           ; Parameters:
+   313                           ;		None
+   314                           ; Auto variables:
+   315                           ;		None
+   316                           ; Return value:
+   317                           ;		type: void 
+   318                           ;		size: 0
+   319                           ; Registers used:
+   320                           ;		None
+   321                           ; Tracked objects:
+   322                           ;		On entry : 0/0
+   323                           ;		On exit  : 300/0
+   324                           ;		Unchanged: FFFFFCFF/0
+   325                           ; Data sizes:
+   326                           ;		Autos:    0
+   327                           ;		Params:   0
+   328                           ;		Temp:     2
+   329                           ;		Total:    2
+   330                           ; This function calls:
+   331                           ;		Nothing
+   332                           ; This function is called by:
+   333                           ;		Interrupt level 1
+   334                           ; This function uses a non-reentrant model
+   335                           ; 
+   336                           ;main.c: 34: void interrupt isr(){
+   337  0151                     _isr:
+   338                           	opt stack 7
+   339                           ;main.c: 35: if (INTF){
+   340  0151  1283               	bcf	3,5	;RP0=0, select bank0
+   341  0152  1303               	bcf	3,6	;RP2=0, select bank0
+   342  0153  1C8B               	btfss	11,1
+   343  0154  2957               	goto	i1l24
+   344                           ;main.c: 36: INTF =0;
+   345  0155  108B               	bcf	11,1
+   346                           ;main.c: 37: RB2 = 1;
+   347  0156  1506               	bsf	6,2
+   348                           ;main.c: 39: }
+   349                           ;main.c: 40: }
+   350  0157                     i1l24:
+   351  0157  0875               	movf	??_isr+1,w
+   352  0158  008A               	movwf	10
+   353  0159  0874               	movf	??_isr,w
+   354  015A  0083               	movwf	3
+   355  015B  0EFF               	swapf	127,f
+   356  015C  0E7F               	swapf	127,w
+   357  015D  0009               	retfie
+   358                           ; =============== function _isr ends ==========
+      +                          =====
+   359  015E                     __end_of_isr:
+   360                           	opt stack 0
+   361                           
+   362                           	psect	intentry
+   363                           ; Regs used in _isr: []
+   364  0004                     interrupt_function:
+   365                           	opt stack 7
+   366  0000                     saved_w	set	btemp+1
+   367  0004  00FF               	movwf	btemp+1
+   368  0005  0803               	movf	3,w
+   369  0006  00F4               	movwf	??_isr
+   370  0007  080A               	movf	10,w
+   371  0008  00F5               	movwf	??_isr+1
+   372  0009  120A  118A  2951   	ljmp	_isr
+   373                           
+   374                           	psect	strings
+   375  0100                     stringtab:
+   376                           	opt stack 0
+   377  0100  00FE               	movwf	btemp& (0+127)
+   378  0101  1FFE               	btfss	btemp& (0+127),7
+   379  0102  2908               	goto	stringcode
+   380  0103  1383               	bcf	3,7
+   381  0104  187E               	btfsc	btemp& (0+127),0
+   382  0105  1783               	bsf	3,7
+   383  0106  0800               	movf	0,w
+   384  0107  0008               	return
+   385  0108                     stringcode:
+   386  0108  0804               	movf	4,w
+   387  0109                     stringdir:
+   388                           	opt stack 0
+   389  0109  00FE               	movwf	btemp& (0+127)
+   390  010A  3001               	movlw	high stringdir
+   391  010B  008A               	movwf	10
+   392  010C  087E               	movf	btemp& (0+127),w
+   393  010D                     stringjmp:
+   394                           	opt stack 0
+   395  010D  0782               	addwf	2,f
+   396  010E                     __stringbase:
+   397                           	opt stack 0
+   398  010E  3400               	retlw	0
+   399  0000                     _ADCON0	set	31
+   400  0000                     _ADCON1	set	159
+   401  0000                     _ADRESH	set	30
+   402  0000                     _ADRESL	set	158
+   403  0000                     _CCP1CON	set	23
+   404  0000                     _CCP2CON	set	29
+   405  0000                     _CCPR1H	set	22
+   406  0000                     _CCPR1L	set	21
+   407  0000                     _CCPR2H	set	28
+   408  0000                     _CCPR2L	set	27
+   409  0000                     _CMCON	set	156
+   410  0000                     _CVRCON	set	157
+   411  0000                     _EEADR	set	269
+   412  0000                     _EEADRH	set	271
+   413  0000                     _EEADRL	set	269
+   414  0000                     _EECON1	set	396
+   415  0000                     _EECON2	set	397
+   416  0000                     _EEDATA	set	268
+   417  0000                     _EEDATH	set	270
+   418  0000                     _FSR	set	4
+   419  0000                     _INDF	set	0
+   420  0000                     _INTCON	set	11
+   421  0000                     _OPTION	set	129
+   422  0000                     _PCL	set	2
+   423  0000                     _PCLATH	set	10
+   424  0000                     _PCON	set	142
+   425  0000                     _PIE1	set	140
+   426  0000                     _PIE2	set	141
+   427  0000                     _PIR1	set	12
+   428  0000                     _PIR2	set	13
+   429  0000                     _PORTA	set	5
+   430  0000                     _PORTB	set	6
+   431  0000                     _PORTC	set	7
+   432  0000                     _PR2	set	146
+   433  0000                     _RCREG	set	26
+   434  0000                     _RCSTA	set	24
+   435  0000                     _SPBRG	set	153
+   436  0000                     _SSPADD	set	147
+   437  0000                     _SSPBUF	set	19
+   438  0000                     _SSPCON	set	20
+   439  0000                     _SSPCON2	set	145
+   440  0000                     _SSPSTAT	set	148
+   441  0000                     _STATUS	set	3
+   442  0000                     _T1CON	set	16
+   443  0000                     _T2CON	set	18
+   444  0000                     _TMR0	set	1
+   445  0000                     _TMR1H	set	15
+   446  0000                     _TMR1L	set	14
+   447  0000                     _TMR2	set	17
+   448  0000                     _TRISA	set	133
+   449  0000                     _TRISB	set	134
+   450  0000                     _TRISC	set	135
+   451  0000                     _TXREG	set	25
+   452  0000                     _TXSTA	set	152
+   453  0000                     _ACKDT	set	1165	;byte address: 0x91
+   454  0000                     _ACKEN	set	1164	;byte address: 0x91
+   455  0000                     _ACKSTAT	set	1166	;byte address: 0x91
+   456  0000                     _ADCS0	set	254	;byte address: 0x1F
+   457  0000                     _ADCS1	set	255	;byte address: 0x1F
+   458  0000                     _ADCS2	set	1278	;byte address: 0x9F
+   459  0000                     _ADDEN	set	195	;byte address: 0x18
+   460  0000                     _ADFM	set	1279	;byte address: 0x9F
+   461  0000                     _ADGO	set	250	;byte address: 0x1F
+   462  0000                     _ADIE	set	1126	;byte address: 0x8C
+   463  0000                     _ADIF	set	102	;byte address: 0xC
+   464  0000                     _ADON	set	248	;byte address: 0x1F
+   465  0000                     _BCLIE	set	1131	;byte address: 0x8D
+   466  0000                     _BCLIF	set	107	;byte address: 0xD
+   467  0000                     _BF	set	1184	;byte address: 0x94
+   468  0000                     _BOR	set	1136	;byte address: 0x8E
+   469  0000                     _BRGH	set	1218	;byte address: 0x98
+   470  0000                     _C1INV	set	1252	;byte address: 0x9C
+   471  0000                     _C1OUT	set	1254	;byte address: 0x9C
+   472  0000                     _C2INV	set	1253	;byte address: 0x9C
+   473  0000                     _C2OUT	set	1255	;byte address: 0x9C
+   474  0000                     _CARRY	set	24	;byte address: 0x3
+   475  0000                     _CCP1IE	set	1122	;byte address: 0x8C
+   476  0000                     _CCP1IF	set	98	;byte address: 0xC
+   477  0000                     _CCP1M0	set	184	;byte address: 0x17
+   478  0000                     _CCP1M1	set	185	;byte address: 0x17
+   479  0000                     _CCP1M2	set	186	;byte address: 0x17
+   480  0000                     _CCP1M3	set	187	;byte address: 0x17
+   481  0000                     _CCP1X	set	189	;byte address: 0x17
+   482  0000                     _CCP1Y	set	188	;byte address: 0x17
+   483  0000                     _CCP2IE	set	1128	;byte address: 0x8D
+   484  0000                     _CCP2IF	set	104	;byte address: 0xD
+   485  0000                     _CCP2M0	set	232	;byte address: 0x1D
+   486  0000                     _CCP2M1	set	233	;byte address: 0x1D
+   487  0000                     _CCP2M2	set	234	;byte address: 0x1D
+   488  0000                     _CCP2M3	set	235	;byte address: 0x1D
+   489  0000                     _CCP2X	set	237	;byte address: 0x1D
+   490  0000                     _CCP2Y	set	236	;byte address: 0x1D
+   491  0000                     _CHS0	set	251	;byte address: 0x1F
+   492  0000                     _CHS1	set	252	;byte address: 0x1F
+   493  0000                     _CHS2	set	253	;byte address: 0x1F
+   494  0000                     _CIS	set	1251	;byte address: 0x9C
+   495  0000                     _CKE	set	1190	;byte address: 0x94
+   496  0000                     _CKP	set	164	;byte address: 0x14
+   497  0000                     _CM0	set	1248	;byte address: 0x9C
+   498  0000                     _CM1	set	1249	;byte address: 0x9C
+   499  0000                     _CM2	set	1250	;byte address: 0x9C
+   500  0000                     _CMIE	set	1134	;byte address: 0x8D
+   501  0000                     _CMIF	set	110	;byte address: 0xD
+   502  0000                     _CREN	set	196	;byte address: 0x18
+   503  0000                     _CSRC	set	1223	;byte address: 0x98
+   504  0000                     _CVR0	set	1256	;byte address: 0x9D
+   505  0000                     _CVR1	set	1257	;byte address: 0x9D
+   506  0000                     _CVR2	set	1258	;byte address: 0x9D
+   507  0000                     _CVR3	set	1259	;byte address: 0x9D
+   508  0000                     _CVREN	set	1263	;byte address: 0x9D
+   509  0000                     _CVROE	set	1262	;byte address: 0x9D
+   510  0000                     _CVRR	set	1261	;byte address: 0x9D
+   511  0000                     _DA	set	1189	;byte address: 0x94
+   512  0000                     _DC	set	25	;byte address: 0x3
+   513  0000                     _EEIE	set	1132	;byte address: 0x8D
+   514  0000                     _EEIF	set	108	;byte address: 0xD
+   515  0000                     _EEPGD	set	3175	;byte address: 0x18C
+   516  0000                     _FERR	set	194	;byte address: 0x18
+   517  0000                     _GCEN	set	1167	;byte address: 0x91
+   518  0000                     _GIE	set	95	;byte address: 0xB
+   519  0000                     _GODONE	set	250	;byte address: 0x1F
+   520  0000                     _INTE	set	92	;byte address: 0xB
+   521  0000                     _INTEDG	set	1038	;byte address: 0x81
+   522  0000                     _INTF	set	89	;byte address: 0xB
+   523  0000                     _IRP	set	31	;byte address: 0x3
+   524  0000                     _OERR	set	193	;byte address: 0x18
+   525  0000                     _PCFG0	set	1272	;byte address: 0x9F
+   526  0000                     _PCFG1	set	1273	;byte address: 0x9F
+   527  0000                     _PCFG2	set	1274	;byte address: 0x9F
+   528  0000                     _PCFG3	set	1275	;byte address: 0x9F
+   529  0000                     _PD	set	27	;byte address: 0x3
+   530  0000                     _PEIE	set	94	;byte address: 0xB
+   531  0000                     _PEN	set	1162	;byte address: 0x91
+   532  0000                     _POR	set	1137	;byte address: 0x8E
+   533  0000                     _PS0	set	1032	;byte address: 0x81
+   534  0000                     _PS1	set	1033	;byte address: 0x81
+   535  0000                     _PS2	set	1034	;byte address: 0x81
+   536  0000                     _PSA	set	1035	;byte address: 0x81
+   537  0000                     _RA0	set	40	;byte address: 0x5
+   538  0000                     _RA1	set	41	;byte address: 0x5
+   539  0000                     _RA2	set	42	;byte address: 0x5
+   540  0000                     _RA3	set	43	;byte address: 0x5
+   541  0000                     _RA4	set	44	;byte address: 0x5
+   542  0000                     _RA5	set	45	;byte address: 0x5
+   543  0000                     _RB0	set	48	;byte address: 0x6
+   544  0000                     _RB1	set	49	;byte address: 0x6
+   545  0000                     _RB2	set	50	;byte address: 0x6
+   546  0000                     _RB3	set	51	;byte address: 0x6
+   547  0000                     _RB4	set	52	;byte address: 0x6
+   548  0000                     _RB5	set	53	;byte address: 0x6
+   549  0000                     _RB6	set	54	;byte address: 0x6
+   550  0000                     _RB7	set	55	;byte address: 0x6
+   551  0000                     _RBIE	set	91	;byte address: 0xB
+   552  0000                     _RBIF	set	88	;byte address: 0xB
+   553  0000                     _RBPU	set	1039	;byte address: 0x81
+   554  0000                     _RC0	set	56	;byte address: 0x7
+   555  0000                     _RC1	set	57	;byte address: 0x7
+   556  0000                     _RC2	set	58	;byte address: 0x7
+   557  0000                     _RC3	set	59	;byte address: 0x7
+   558  0000                     _RC4	set	60	;byte address: 0x7
+   559  0000                     _RC5	set	61	;byte address: 0x7
+   560  0000                     _RC6	set	62	;byte address: 0x7
+   561  0000                     _RC7	set	63	;byte address: 0x7
+   562  0000                     _RCEN	set	1163	;byte address: 0x91
+   563  0000                     _RCIE	set	1125	;byte address: 0x8C
+   564  0000                     _RCIF	set	101	;byte address: 0xC
+   565  0000                     _RD	set	3168	;byte address: 0x18C
+   566  0000                     _RP0	set	29	;byte address: 0x3
+   567  0000                     _RP1	set	30	;byte address: 0x3
+   568  0000                     _RSEN	set	1161	;byte address: 0x91
+   569  0000                     _RW	set	1186	;byte address: 0x94
+   570  0000                     _RX9	set	198	;byte address: 0x18
+   571  0000                     _RX9D	set	192	;byte address: 0x18
+   572  0000                     _SEN	set	1160	;byte address: 0x91
+   573  0000                     _SMP	set	1191	;byte address: 0x94
+   574  0000                     _SPEN	set	199	;byte address: 0x18
+   575  0000                     _SREN	set	197	;byte address: 0x18
+   576  0000                     _SSPEN	set	165	;byte address: 0x14
+   577  0000                     _SSPIE	set	1123	;byte address: 0x8C
+   578  0000                     _SSPIF	set	99	;byte address: 0xC
+   579  0000                     _SSPM0	set	160	;byte address: 0x14
+   580  0000                     _SSPM1	set	161	;byte address: 0x14
+   581  0000                     _SSPM2	set	162	;byte address: 0x14
+   582  0000                     _SSPM3	set	163	;byte address: 0x14
+   583  0000                     _SSPOV	set	166	;byte address: 0x14
+   584  0000                     _START	set	1187	;byte address: 0x94
+   585  0000                     _STOP	set	1188	;byte address: 0x94
+   586  0000                     _SYNC	set	1220	;byte address: 0x98
+   587  0000                     _T0CS	set	1037	;byte address: 0x81
+   588  0000                     _T0IE	set	93	;byte address: 0xB
+   589  0000                     _T0IF	set	90	;byte address: 0xB
+   590  0000                     _T0SE	set	1036	;byte address: 0x81
+   591  0000                     _T1CKPS0	set	132	;byte address: 0x10
+   592  0000                     _T1CKPS1	set	133	;byte address: 0x10
+   593  0000                     _T1OSCEN	set	131	;byte address: 0x10
+   594  0000                     _T1SYNC	set	130	;byte address: 0x10
+   595  0000                     _T2CKPS0	set	144	;byte address: 0x12
+   596  0000                     _T2CKPS1	set	145	;byte address: 0x12
+   597  0000                     _TMR0IE	set	93	;byte address: 0xB
+   598  0000                     _TMR0IF	set	90	;byte address: 0xB
+   599  0000                     _TMR1CS	set	129	;byte address: 0x10
+   600  0000                     _TMR1IE	set	1120	;byte address: 0x8C
+   601  0000                     _TMR1IF	set	96	;byte address: 0xC
+   602  0000                     _TMR1ON	set	128	;byte address: 0x10
+   603  0000                     _TMR2IE	set	1121	;byte address: 0x8C
+   604  0000                     _TMR2IF	set	97	;byte address: 0xC
+   605  0000                     _TMR2ON	set	146	;byte address: 0x12
+   606  0000                     _TO	set	28	;byte address: 0x3
+   607  0000                     _TOUTPS0	set	147	;byte address: 0x12
+   608  0000                     _TOUTPS1	set	148	;byte address: 0x12
+   609  0000                     _TOUTPS2	set	149	;byte address: 0x12
+   610  0000                     _TOUTPS3	set	150	;byte address: 0x12
+   611  0000                     _TRISA0	set	1064	;byte address: 0x85
+   612  0000                     _TRISA1	set	1065	;byte address: 0x85
+   613  0000                     _TRISA2	set	1066	;byte address: 0x85
+   614  0000                     _TRISA3	set	1067	;byte address: 0x85
+   615  0000                     _TRISA4	set	1068	;byte address: 0x85
+   616  0000                     _TRISA5	set	1069	;byte address: 0x85
+   617  0000                     _TRISB0	set	1072	;byte address: 0x86
+   618  0000                     _TRISB1	set	1073	;byte address: 0x86
+   619  0000                     _TRISB2	set	1074	;byte address: 0x86
+   620  0000                     _TRISB3	set	1075	;byte address: 0x86
+   621  0000                     _TRISB4	set	1076	;byte address: 0x86
+   622  0000                     _TRISB5	set	1077	;byte address: 0x86
+   623  0000                     _TRISB6	set	1078	;byte address: 0x86
+   624  0000                     _TRISB7	set	1079	;byte address: 0x86
+   625  0000                     _TRISC0	set	1080	;byte address: 0x87
+   626  0000                     _TRISC1	set	1081	;byte address: 0x87
+   627  0000                     _TRISC2	set	1082	;byte address: 0x87
+   628  0000                     _TRISC3	set	1083	;byte address: 0x87
+   629  0000                     _TRISC4	set	1084	;byte address: 0x87
+   630  0000                     _TRISC5	set	1085	;byte address: 0x87
+   631  0000                     _TRISC6	set	1086	;byte address: 0x87
+   632  0000                     _TRISC7	set	1087	;byte address: 0x87
+   633  0000                     _TRMT	set	1217	;byte address: 0x98
+   634  0000                     _TX9	set	1222	;byte address: 0x98
+   635  0000                     _TX9D	set	1216	;byte address: 0x98
+   636  0000                     _TXEN	set	1221	;byte address: 0x98
+   637  0000                     _TXIE	set	1124	;byte address: 0x8C
+   638  0000                     _TXIF	set	100	;byte address: 0xC
+   639  0000                     _UA	set	1185	;byte address: 0x94
+   640  0000                     _WCOL	set	167	;byte address: 0x14
+   641  0000                     _WR	set	3169	;byte address: 0x18C
+   642  0000                     _WREN	set	3170	;byte address: 0x18C
+   643  0000                     _WRERR	set	3171	;byte address: 0x18C
+   644  0000                     _ZERO	set	26	;byte address: 0x3
+   645  010F                     STR_1:
+   646  010F  3464               	retlw	100	;'d'
+   647  0110  3465               	retlw	101	;'e'
+   648  0111  346D               	retlw	109	;'m'
+   649  0112  346F               	retlw	111	;'o'
+   650  0113  3420               	retlw	32	;' '
+   651  0114  3473               	retlw	115	;'s'
+   652  0115  346F               	retlw	111	;'o'
+   653  0116  3466               	retlw	102	;'f'
+   654  0117  3474               	retlw	116	;'t'
+   655  0118  3420               	retlw	32	;' '
+   656  0119  3475               	retlw	117	;'u'
+   657  011A  3461               	retlw	97	;'a'
+   658  011B  3472               	retlw	114	;'r'
+   659  011C  3474               	retlw	116	;'t'
+   660  011D  340D               	retlw	13
+   661  011E  340A               	retlw	10
+   662  011F  3400               	retlw	0	;btemp
+   663                           
+   664                           	psect	fnautoc
+   665  0000                     btemp	set	126
+   666  0000                     wtemp0	set	126
+   667  0000                     wtemp1	set	128
+   668  0000                     ttemp0	set	126
+   669  0000                     ltemp0	set	126
+   670  0070                     
+
+
+HI-TECH Software PICC Macro Assembler V9.65 build 4410 
+Symbol Table                                          Sat Jun 02 01:01:19 2012
+
+                l3 0135                  l7 012A                  l8 0122  
+        __Lrdata_0 0000                  pc 0002          __Lramdata 0000  
+               _DA 04A5                 _BF 04A0                 l22 0021  
+               _DC 0019                 _PD 001B                 _RD 0C60  
+               _UA 04A1                 _TO 001C                 _RW 04A2  
+               _WR 0C61                 fsr 0004                _CM0 04E0  
+              _CM1 04E1                _CM2 04E2                _CKE 04A6  
+              _CIS 04E3                _CKP 00A4                _GIE 005F  
+              _BOR 0470                _RA0 0028                _RA1 0029  
+              _RB0 0030                _RA2 002A                _RB1 0031  
+              _RA3 002B                _RC0 0038                _RB2 0032  
+              _RA4 002C                _RC1 0039                _RB3 0033  
+              _RA5 002D                _RC2 003A                _RB4 0034  
+              _RC3 003B                _RB5 0035                _RC4 003C  
+              _RB6 0036                _RC5 003D                _RB7 0037  
+              _RC6 003E                _RC7 003F                _FSR 0004  
+              _PCL 0002                _PS0 0408                _PR2 0092  
+              _PS1 0409                _RP0 001D                _PS2 040A  
+              _PEN 048A                _IRP 001F                _RP1 001E  
+              _SEN 0488                _PSA 040B                u597 002B  
+              _POR 0471                _RX9 00C6                _SMP 04A7  
+              _TX9 04C6                _isr 0151                indf 0000  
+             _ADIE 0466               _ADIF 0066               _ADFM 04FF  
+             ?_isr 0074               _ADGO 00FA           __tempreg 0075  
+             _ADON 00F8               _CHS0 00FB               _CHS1 00FC  
+             _CHS2 00FD               _EEIE 046C               _EEIF 006C  
+             STR_1 010F               _GCEN 048F               _CMIE 046E  
+             _CMIF 006E               _BRGH 04C2               _T0IE 005D  
+             _T0IF 005A               _CREN 00C4               _T0CS 040D  
+             _FERR 00C2               _CVR0 04E8               _CVR1 04E9  
+             _CVR2 04EA               _CVR3 04EB               _T0SE 040C  
+             _CSRC 04C7               _INDF 0000               _PIE1 008C  
+             _PIE2 008D               _CVRR 04ED               _PEIE 005E  
+             _INTE 005C               _INTF 0059               _RBIE 005B  
+             _RBIF 0058               i1l24 0157               _RCIE 0465  
+             _RCIF 0065               _RCEN 048B               _PCON 008E  
+             _PIR1 000C               _PIR2 000D               _OERR 00C1  
+             _RBPU 040F               _RX9D 00C0               _TMR0 0001  
+             _TMR2 0011               _WCOL 00A7               _SPEN 00C7  
+             _RSEN 0489          __databank 0000               _TX9D 04C0  
+             _SREN 00C5               _TRMT 04C1               _STOP 04A4  
+             _ZERO 001A               _TXIE 0464               _WREN 0C62  
+             _TXIF 0064               _TXEN 04C5               _SYNC 04C4  
+             _main 000F               btemp 007E               start 000C  
+interrupt_function 0004              ??_isr 0074          stringcode 0108  
+          _CCP1CON 0017            _CCP2CON 001D            _ACKSTAT 048E  
+            _C1INV 04E4              _C2INV 04E5              _C1OUT 04E6  
+            _C2OUT 04E7              _ADCS0 00FE              _ADCS1 00FF  
+            _ADCS2 04FE              _ADDEN 00C3              ?_main 0070  
+            _ACKEN 048C              _ACKDT 048D              _BCLIE 046B  
+            _BCLIF 006B              _CCP1X 00BD              _CCP1Y 00BC  
+            _CCP2X 00ED              _CCP2Y 00EC              _EEADR 010D  
+      _uart_putc_c 0073              _CARRY 0018              _EEPGD 0C67  
+            _CMCON 009C        _uart_puts_s 0072              _T1CON 0010  
+            _T2CON 0012            _T1CKPS0 0084            _T1CKPS1 0085  
+            _PCFG0 04F8              _PCFG1 04F9              _PCFG2 04FA  
+            _PCFG3 04FB            _T2CKPS0 0090            _T2CKPS1 0091  
+            _CVREN 04EF              _CVROE 04EE              _RCREG 001A  
+            _RCSTA 0018              _TMR1H 000F              _TMR1L 000E  
+            _SPBRG 0099              _PORTA 0005              _PORTB 0006  
+          _T1OSCEN 0083              _PORTC 0007              _START 04A3  
+            _SSPM0 00A0              _SSPM1 00A1              _SSPM2 00A2  
+            _SSPM3 00A3              _TRISA 0085              _TRISB 0086  
+            _TRISC 0087              _SSPIE 0463              _SSPIF 0063  
+            _SSPEN 00A5              _SSPOV 00A6              _WRERR 0C63  
+            _TXREG 0019              _TXSTA 0098            _SSPCON2 0091  
+          _SSPSTAT 0094            _TOUTPS0 0093            _TOUTPS1 0094  
+          _TOUTPS2 0095            _TOUTPS3 0096              pclath 000A  
+            ltemp0 007E           intlevel1 0004              ttemp0 007E  
+            status 0003              wtemp0 007E              wtemp1 0080  
+      __stringbase 010E          _uart_init 013C             ??_main 0070  
+__end_of_uart_init 0134          _uart_putc 0134          _uart_puts 0120  
+__end_of_uart_putc 015E  __end_of_uart_puts 013C         ?_uart_init 0072  
+       ?_uart_putc 0073         ?_uart_puts 0072           stringdir 0109  
+         stringjmp 010D           stringtab 0100             _ADCON0 001F  
+           _ADCON1 009F             _CCP1M0 00B8             _CCP1M1 00B9  
+           _CCP1M2 00BA             _CCP1M3 00BB             _CCP2M0 00E8  
+           _CCP2M1 00E9             _CCP2M2 00EA             _CCP2M3 00EB  
+           _CCP1IE 0462             _CCP1IF 0062             _CCP2IE 0468  
+           _CCP2IF 0068             _ADRESH 001E             _EEADRH 010F  
+           _ADRESL 009E             _EEADRL 010D             _EEDATA 010C  
+           _CCPR1H 0016             _EEDATH 010E             _CCPR2H 001C  
+           _CCPR1L 0015             _CCPR2L 001B             _EECON1 018C  
+           _EECON2 018D       __end_of_main 0031        ??_uart_init 0072  
+           _GODONE 00FA        ??_uart_putc 0073             _CVRCON 009D  
+      ??_uart_puts 0072             _T1SYNC 0082             _INTEDG 040E  
+           _PCLATH 000A             _INTCON 000B             _TMR0IE 005D  
+           _TMR0IF 005A             _TMR1IE 0460             _TMR1IF 0060  
+           _TMR1CS 0081             _TMR2IE 0461             _TMR2IF 0061  
+           _TMR1ON 0080             _OPTION 0081             _TMR2ON 0092  
+           _SSPADD 0093             _TRISA0 0428             _TRISA1 0429  
+           _TRISB0 0430             _TRISA2 042A             _TRISB1 0431  
+           _TRISA3 042B             _TRISC0 0438             _TRISB2 0432  
+           _TRISA4 042C             _TRISC1 0439             _TRISB3 0433  
+           _TRISA5 042D             _TRISC2 043A             _TRISB4 0434  
+           _TRISC3 043B             _TRISB5 0435             _TRISC4 043C  
+           _TRISB6 0436             _TRISC5 043D             _TRISB7 0437  
+           _TRISC6 043E             _TRISC7 043F             _STATUS 0003  
+           _SSPCON 0014             _SSPBUF 0013        __end_of_isr 015E  
+           saved_w 007F          __Hrdata_0 0001          __Hramdata 0001  

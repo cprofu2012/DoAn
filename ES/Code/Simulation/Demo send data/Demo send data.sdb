@@ -2,28 +2,20 @@
 [d version 1.1 ]
 [d edition pro ]
 [d chip 16F876A ]
-"36 D:\DoAn\ES\Code\Firmware\main.c
-[v F737 `(v  1 t 0 ]
+"34 D:\DoAn\ES\Code\Simulation\Demo Firmware_uart_876a\main.c
+[v F732 `(v  1 t 0 ]
 "381 C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\include\pic.h
 [v __delay `(v  1 e 0 0 ]
-"20 D:\DoAn\ES\Code\Firmware\main.c
+"11 D:\DoAn\ES\Code\Simulation\Demo Firmware_uart_876a\main.c
 [v _main `(v  1 e 0 0 ]
-"36
-[v _isr `I(v  1 s 0 isr ]
-"52
-[v _sleep_all `(v  1 e 0 0 ]
-"58
-[v _turn_led `(v  1 e 0 0 ]
-"63
-[v _init_all `(v  1 e 0 0 ]
-"20 D:\DoAn\ES\Code\Firmware\softuart.c
-[v _s_uart_getc `(uc  1 e 1 0 ]
-"5 D:\DoAn\ES\Code\Firmware\uart.c
-[v _h_uart_init `(v  1 e 0 0 ]
-"78
-[v _h_uart_putc `(v  1 e 0 0 ]
-"83
-[v _h_uart_puts `(v  1 e 0 0 ]
+"34
+[v _isr `I(v  1 e 0 0 ]
+"5 D:\DoAn\ES\Code\Simulation\Demo Firmware_uart_876a\uart.c
+[v _uart_init `(v  1 e 0 0 ]
+"22
+[v _uart_putc `(v  1 e 0 0 ]
+"27
+[v _uart_puts `(v  1 e 0 0 ]
 "19 C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\include\pic168xa.h
 [v _INDF `Vuc  1 e 1 @0 ]
 "20
@@ -516,79 +508,32 @@
 [v _WR `Vb  1 e 0 @3169 ]
 "392
 [v _RD `Vb  1 e 0 @3168 ]
-"16 D:\DoAn\ES\Code\Firmware\main.c
-[v _signal_mode `b  1 e 0 @896 ]
-"14 D:\DoAn\ES\Code\Firmware\softuart.c
-[v _RxData `b  1 s 0 RxData ]
-"20 D:\DoAn\ES\Code\Firmware\main.c
+"11 D:\DoAn\ES\Code\Simulation\Demo Firmware_uart_876a\main.c
 [v _main `(v  1 e 0 0 ]
 {
-"30
-[v _main_c `uc  1 a 1 0 ]
-"34
-} 1
-"52
-[v _sleep_all `(v  1 e 0 0 ]
-{
-"55
+"33
 } 0
-"20 D:\DoAn\ES\Code\Firmware\softuart.c
-[v _s_uart_getc `(uc  1 e 1 0 ]
+"27 D:\DoAn\ES\Code\Simulation\Demo Firmware_uart_876a\uart.c
+[v _uart_puts `(v  1 e 0 0 ]
 {
-"21
-[v _s_uart_getc_bitno `uc  1 a 1 0 ]
-[v _s_uart_getc_c `uc  1 a 1 1 ]
+[v _uart_puts_s `*.cDCuc  1 a 1 wreg ]
+[v _uart_puts_s `*.cDCuc  1 a 1 wreg ]
+"32
+} 1
+"5
+[v _uart_init `(v  1 e 0 0 ]
+{
+"20
+} 0
 "22
-[v _s_uart_getc_dly `ui  1 a 2 2 ]
-"44
-} 4
-"83 D:\DoAn\ES\Code\Firmware\uart.c
-[v _h_uart_puts `(v  1 e 0 0 ]
+[v _uart_putc `(v  1 e 0 0 ]
 {
-[v _h_uart_puts_str_out `*.cDCuc  1 a 1 wreg ]
-[v _h_uart_puts_str_out `*.cDCuc  1 a 1 wreg ]
-"88
+[v _uart_putc_c `uc  1 a 1 wreg ]
+[v _uart_putc_c `uc  1 a 1 wreg ]
+"25
 } 1
-"63 D:\DoAn\ES\Code\Firmware\main.c
-[v _init_all `(v  1 e 0 0 ]
+"34 D:\DoAn\ES\Code\Simulation\Demo Firmware_uart_876a\main.c
+[v _isr `I(v  1 e 0 0 ]
 {
-"77
+"40
 } 0
-"5 D:\DoAn\ES\Code\Firmware\uart.c
-[v _h_uart_init `(v  1 e 0 0 ]
-{
-"76
-} 0
-"78
-[v _h_uart_putc `(v  1 e 0 0 ]
-{
-[v _h_uart_putc_char_out `uc  1 a 1 wreg ]
-[v _h_uart_putc_char_out `uc  1 a 1 wreg ]
-"81
-} 1
-"58 D:\DoAn\ES\Code\Firmware\main.c
-[v _turn_led `(v  1 e 0 0 ]
-{
-[v _turn_led_led_status `uc  1 a 1 wreg ]
-[v _turn_led_led_status `uc  1 a 1 wreg ]
-"60
-} 1
-"36
-[v _isr `I(v  1 s 0 isr ]
-{
-"49
-} 0
-"83 D:\DoAn\ES\Code\Firmware\uart.c
-[v _h_uart_puts `(v  1 e 0 0 ]
-{
-[v i1_h_uart_puts_str_out `*.cDCuc  1 a 1 0 ]
-[v i1_h_uart_puts_str_out `*.cDCuc  1 a 1 0 ]
-"88
-} 1
-"78
-[v _h_uart_putc `(v  1 e 0 0 ]
-{
-[v i1_h_uart_putc_char_out `uc  1 a 1 0 ]
-[v i1_h_uart_putc_char_out `uc  1 a 1 0 ]
-"81
-} 1

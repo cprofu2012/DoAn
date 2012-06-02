@@ -1,5 +1,5 @@
 
-# 1 "D:\DoAn\ES\Code\Firmware\uart.c"
+# 1 "D:\DoAn\ES\Code\Firmware\softuart.c"
 
 # 19 "C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\include\pic168xa.h"
 volatile unsigned char INDF @ 0x00;
@@ -342,35 +342,44 @@ void h_uart_puts(const char* str_out);
 char s_uart_getc();
 void s_uart_gets(char* str_in);
 
-# 4 "D:\DoAn\ES\Code\Firmware\uart.c"
-void h_uart_init()
+# 14 "D:\DoAn\ES\Code\Firmware\softuart.c"
+static bit RxData @(unsigned)&PORTB*8+2;
+
+
+
+
+char s_uart_getc()
 {
+unsigned char c, bitno;
+unsigned int dly;
 
-# 62
-SPBRG=(10000000/(16UL * 19200))-1;
-BRGH= 1;
-SYNC=0;
-SPEN=1;
-CREN=1;
-SREN=0;
-TXIE=0;
-RCIE=0;
-TX9=0;
-RX9=0;
-TXEN=0;
-TXEN=1;
-TRISC6 = 0;
-TRISC7 = 1;
+for(;;) {
+while(RxData)
+continue;
+dly = (((10000000/1200)-(3*4*10000000/10000000))/(9*4*10000000/10000000))/2;
+do
+;
+while(--dly);
+if(RxData)
+continue;
+bitno = 8;
+c = 0;
+do {
+dly = (((10000000/1200)-(12*4*10000000/10000000))/(9*4*10000000/10000000));
+do
+;
+while(--dly);
+c = (c >> 1) | (RxData << 7);
+} while(--bitno);
+return c;
+}
 }
 
-void h_uart_putc(char char_out){
-while(!TXIF);
-TXREG = char_out;
-}
-
-void h_uart_puts(const char* str_out){
-while(*str_out != '\0'){
-h_uart_putc(*str_out);
-str_out++;
+void s_uart_gets(char *str_in){
+char g;
+*str_in = s_uart_getc();
+while(*str_in!='\0'){
+str_in++;
+*str_in = s_uart_getc();
 }
 }

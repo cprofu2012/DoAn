@@ -1,34 +1,30 @@
 #include <htc.h>
 #include "uart.h"
 
-void uart_init()
+void h_uart_init()
 {
-	#ifndef _XTAL_FREQ
-		#error "Please define _XTAL_FREQ in uart.h"
-	#endif
+	
 	#define FOSC _XTAL_FREQ      // <<< clock freq (ie: 4000000 Hz)
-	#ifndef	BAUD
-		#error "Please define BAUD in uart.h"
-	#endif
+	
 	#define	BAUD_ERROR	4 	    // <<< set max. baud rate error (ie: 4%)
 
   //generate settings
-	#if ((FOSC/(16UL * BAUD))-1UL) < 256UL
-		#define SPBRG_SET (FOSC/(16UL * BAUD))-1
+	#if ((FOSC/(16UL * H_BAUD))-1UL) < 256UL
+		#define SPBRG_SET (FOSC/(16UL * H_BAUD))-1
 		#define BRGH_SET 1
 	#else
-		#define SPBRG_SET (FOSC/(64UL * BAUD))-1
+		#define SPBRG_SET (FOSC/(64UL * H_BAUD))-1
 		#define BRGH_SET 0
 	#endif
 
   //check that error < N% (see manual for USART baud rates for async. mode)
 	#define	BAUD_REAL (FOSC/((64UL-(BRGH_SET*48UL))*(SPBRG_SET+1)))
-	#if BAUD_REAL > BAUD
-		#if (((BAUD_REAL - BAUD)*100UL)/BAUD) > BAUD_ERROR
+	#if BAUD_REAL > H_BAUD
+		#if (((BAUD_REAL - H_BAUD)*100UL)/H_BAUD) > BAUD_ERROR
 			#error	"baud rate error percentage is too high"
 		#endif
 	#else
-		#if (((BAUD - BAUD_REAL)*100UL)/BAUD) > BAUD_ERROR
+		#if (((H_BAUD - BAUD_REAL)*100UL)/H_BAUD) > BAUD_ERROR
 			#error	"baud rate error percentage is too high"
 		#endif
 	#endif
@@ -50,11 +46,8 @@ void uart_init()
 	*/
 
 	//you can comment these #assert statements out if you dont want error checking
-	#if FOSC==3686400 && BAUD==19200
-		#assert SPBRG_SET==11
-	#elif FOSC==4000000 && BAUD==19200
-		#assert SPBRG_SET==12
-	#elif FOSC==10000000 && BAUD==19200
+	
+	#if FOSC==10000000 && H_BAUD==19200
 		#if BRGH_SET==0
   		#assert SPBRG_SET==7
     #elif BRGH_SET==1
@@ -62,28 +55,8 @@ void uart_init()
     #else
       #error
     #endif
-	#elif FOSC==10000000 && BAUD==33600
-		#if BRGH_SET==0
-  		#assert SPBRG_SET==4
-    #elif BRGH_SET==1
-  		#assert SPBRG_SET==18 //NOTE: due to rounding, this should be 18, not 17! See manual.
-    #else
-      #error
-    #endif
-	#elif FOSC==16000000 && BAUD==19200
-		#assert SPBRG_SET==51
-	#elif FOSC==20000000 && BAUD==19200
-		#assert SPBRG_SET==64
-	#elif FOSC==20000000 && BAUD==57600
-		#if BRGH_SET==0
-  		#assert SPBRG_SET==4
-    #elif BRGH_SET==1
-  		#assert SPBRG_SET==20
-    #else
-      #error
-    #endif
-  #else
-    #error could not #assert SPRBG and BRGH for specified crystal freq. and baud rate
+	#else
+		#error could not #assert SPRBG and BRGH for specified crystal freq. and baud rate
 	#endif
 
 	SPBRG=SPBRG_SET;
@@ -102,30 +75,14 @@ void uart_init()
 	RX_TRIS = 1;
 }
 
-void uart_putc(char c){
+void h_uart_putc(char char_out){
 	while(!TXIF);
-	TXREG = c;
+	TXREG = char_out;
 }
 
-void uart_puts(const char* s){
-	while(*s != '\0'){
-		uart_putc(*s);
-		s++;
-	}
-}
-char uart_getc(){
-	while(!RCIF);
-	return RCREG;
-}
-char uart_data_ready(){
-	if(RCIF) return 1;
-	else return 0;
-}
-void uart_gets(char *s){
-	char g;
-	*s = uart_getc();
-	while(*s!='\0'){
-		s++;
-		*s = uart_getc();
+void h_uart_puts(const char* str_out){
+	while(*str_out != '\0'){
+		h_uart_putc(*str_out);
+		str_out++;
 	}
 }

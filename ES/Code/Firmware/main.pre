@@ -492,74 +492,57 @@ extern const char * strichr(const char *, int);
 extern const char * strrchr(const char *, int);
 extern const char * strrichr(const char *, int);
 
-# 12 "D:\DoAn\ES\Code\Firmware\uart.h"
-void uart_init();
-void uart_putc(char c);
-void uart_putn(unsigned char c);
-void uart_puts(const char *s);
-char uart_data_ready();
-char uart_getc();
-void uart_gets(char *s);
+# 20 "D:\DoAn\ES\Code\Firmware\uart.h"
+void h_uart_init();
+void h_uart_putc(char char_out);
+void h_uart_puts(const char* str_out);
+
+char s_uart_getc();
+void s_uart_gets(char* str_in);
 
 # 7 "D:\DoAn\ES\Code\Firmware\main.c"
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x3FFE & 0x3FFB& 0x3F7F");
+
 
 
 void init_all();
 void process();
 void receive_data();
 void sleep_all();
-void blink_led();
+void turn_led(unsigned char led_status);
 bit signal_mode = 0;
 
 
 void main()
 {
 init_all();
-uart_puts("Welcome to GSS Group\r\n");
 
-
-char c = uart_getc();
-while(1){
-blink_led();
-uart_putc(c);
-_delay((unsigned long)((50)*(10000000/4000.0)));
-}
-
-
-}
-
-
-void init_all(){
-TRISB = 0xFF;
-TRISC = 0x00;
-
-uart_init();
-
-RBIE = 1;
-RBIF = 0;
-
-INTE = 1;
-INTEDG = 1;
-
-
-}
-
-
-void process(){
-char start = '$';
-uart_putc(start);
+h_uart_puts("start\r\n");
 _delay((unsigned long)((10)*(10000000/4000.0)));
+
+sleep_all();
+h_uart_puts("wakeup\r\n");
+
+while(1){
+char c = s_uart_getc();
+h_uart_putc(c);
+
+}
 }
 
-void blink_led(){
-RC3 = 1;
-_delay((unsigned long)((50)*(10000000/4000.0)));
-RC3 = 0;
-_delay((unsigned long)((50)*(10000000/4000.0)));
+static void interrupt isr(){
+if (RBIF){
+RB4 = 1;
+RBIF = 0;
+RC2 = 0;
+h_uart_puts("rb interrupt \r\n");
 }
 
-void receive_data(){
+if(INTF) {
+INTF = 0;
+signal_mode = RB2;
+h_uart_puts("int interrupt \r\n");
+}
 }
 
 
@@ -569,17 +552,23 @@ asm("sleep");
 }
 
 
-static void interrupt isr(){
-if (RBIF){
-RB4 = 1;
-RBIF = 0;
-RC2 = 0;
-RC4 = 1;
+void turn_led(unsigned char led_status){
+RC3 = led_status;
 }
 
-if(INTF) {
-INTF = 0;
-signal_mode = RB2;
-RC3 = 1;
-}
+
+void init_all(){
+TRISB = 0xFF;
+TRISC = 0x00;
+h_uart_init();
+
+RBIE = 1;
+RBIF = 0;
+
+INTE = 1;
+INTEDG = 1;
+
+GIE = 1;
+
+turn_led(1);
 }
