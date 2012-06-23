@@ -1,0 +1,1 @@
+demo send array of data, receive and decode SDMF message

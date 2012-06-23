@@ -1,0 +1,211 @@
+[Header]
+MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
+Version=1.0
+[File000]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\main.p1
+Folder=Intermediary
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
+[File001]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\uart.p1
+Folder=Intermediary
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
+[File002]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\soft_uart.p1
+Folder=Intermediary
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
+[File003]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\Demo Firmware.cof
+Folder=Output
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
+[File004]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\Demo Firmware.hex
+Folder=Output
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
+[File005]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\Demo Firmware.sym
+Folder=Output
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
+[File006]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\Demo Firmware.map
+Folder=Output
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
+[File007]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\Demo Firmware.hxl
+Folder=Output
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
+[File008]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\startup.lst
+Folder=Output
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
+[File009]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\startup.rlf
+Folder=Output
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
+[File010]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\doprnt.p1
+Folder=Output
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
+[File011]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\doprnt.pre
+Folder=Output
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
+[File012]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\Demo Firmware.obj
+Folder=Output
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
+[File013]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\Demo Firmware.lst
+Folder=Output
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
+[File014]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\Demo Firmware.rlf
+Folder=Output
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
+[File015]
+Location=D:\DoAn\ES\Code\Simulation\demo\U1\Demo Firmware.sdb
+Folder=Output
+DeviceName=PIC16F876A
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\PRO\9.65\bin\picc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|uart.c|soft_uart.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C6=31 DB=0 DC=9 DF=0 DD=1 C2=0 C3=0 DE=1 D7=1 11E=0 11F=85 C9=13 FE=27 EC=1 F0=0 EF=1 EE=0 104=0 E9= C4=2 F2= F3= F4= F8=1 F9=0 FA=0 FB=0 C0=1 C1=0 BD=0 BC=0 BB=0 BF=0 BE=0 B8= 101=0 103= 102=0 BA= FF=0 100=0 106=0 109=0 10A=1 10B=0 10C=0 10E=0 10F=1 110=0 118=0 116=0 117= 10D=0 114=-1 113=-1 111=0 115=-1 F5=0 E5=0 E7=0 E8=0 F1=0 F6= F7= B9=-1 107=0
+TraceCmdString=
+DebugOptions=
